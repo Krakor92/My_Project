@@ -1,0 +1,79 @@
+/*
+** EPITECH PROJECT, 2017
+** head_n_tail_dlist.c
+** File description:
+** File that regroup functions whose are related to
+** head and tail of dlists
+*/
+#include "double_str_list.h"
+
+int get_dlist_length(DListCore_ptr dlist)
+{
+	if (dlist_is_null(dlist))
+		return (-1);
+	return (dlist->length);
+}
+
+char *get_dlist_head_value(DListCore_ptr dlist)
+{
+	if (dlist_is_null(dlist) || dlist_is_empty(dlist))
+		return (0);
+	return (dlist->head->val);
+}
+
+char *get_dlist_tail_value(DListCore_ptr dlist)
+{
+	if (dlist_is_null(dlist) || dlist_is_empty(dlist))
+		return (0);
+	return (dlist->tail->val);
+}
+
+int insert_head_dlist(DListCore_ptr dlist, char *str)
+{
+	DListNode_ptr element;
+	element = get_new_node(str);
+	if (element == NULL)
+		return (-1);
+
+	if (dlist_is_null(dlist)) {
+		dlist = get_new_dlist();
+		if (dlist == NULL)
+			return (-1);
+	}
+	if (dlist_is_empty(dlist)) {
+		dlist->length += 1;
+		dlist->head = element;
+		dlist->tail = element;
+	} else {
+		dlist->length += 1;
+		dlist->head->prev = element;
+		element->next = dlist->head;
+		dlist->head = element;
+	}
+	return (0);
+}
+
+int insert_tail_dlist(DListCore_ptr dlist, char *str)
+{
+	DListNode_ptr element;
+	element = get_new_node(str);
+	if (element == NULL)
+		return (-1);
+
+	if (dlist_is_null(dlist)) {
+		dlist = get_new_dlist();
+		if (dlist == NULL)
+			return (-1);
+	}
+	if (dlist_is_empty(dlist)) {
+		dlist->length += 1;
+		dlist->head = element;
+		dlist->tail = element;
+	} else {
+		dlist->length += 1;
+		dlist->tail->next = element;
+		element->prev = dlist->tail;
+		dlist->tail = element;
+	}
+	return (0);
+}
