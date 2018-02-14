@@ -21,5 +21,6 @@ int main(int ac, char **av)
 		print_help();
 		return (SUCCESS);
 	}
+	my_printf("Salut les %s\n", "amis");
 	return (SUCCESS);
 }

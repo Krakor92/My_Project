@@ -10,11 +10,10 @@
 	/* Library */
 	#include <stdio.h>
 	#include "double_str_list.h"
+	#include "my_printf.h"
 	#include "utils1.h"
 	#include "utils2.h"
 	#include "utilsCSFML.h"
-
-	/* Structs */
 
 	/* Macros */
 
@@ -22,6 +21,7 @@
 	static const int SUCCESS = 0;
 	static const int FAILURE = 84;
 
-	/* Prototypes */
+	/* Structs */
 
+	/* Prototypes */
 #endif
