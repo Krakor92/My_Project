@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2017
-** delete_dlists.c
+** [N/A] {Vincent FAIVRE}
 ** File description:
-** File that regroup function that delete or clean dlist
+** Functions that delete or clean dlist
 */
 #include "str_dlist.h"
 

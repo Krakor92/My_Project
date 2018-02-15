@@ -1,9 +1,8 @@
 /*
 ** EPITECH PROJECT, 2017
-** CPE_pushswap_2017 -> double_list.c
+** [N/A] {Vincent FAIVRE}
 ** File description:
-** File that contain function that are relative to
-** basics double linked lists
+** Functions that are relative to the basics of double linked lists
 */
 #include "str_dlist.h"
 

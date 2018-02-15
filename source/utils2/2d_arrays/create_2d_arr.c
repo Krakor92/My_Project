@@ -1,11 +1,20 @@
 /*
 ** EPITECH PROJECT, 2018
-** [N/A]
+** [N/A] {Vincent FAIVRE}
 ** File description:
 ** Functions that create 2 dimensions arrays (char**, int**, etc...)
 */
 #include "utils2.h"
 
+/*
+** create_2d_char_arr =
+** Create an allocated array of a certain number of strings of a certain size
+**
+** @param	nb_str		Number of string in the array
+** @param	str_size	Size of each string in the array
+** @return	The array with '\0' at the end of each string if
+** 		the allocation worked well OR NULL
+*/
 char **create_2d_char_arr(int nb_str, int str_size)
 {
 	char **arr = NULL;
@@ -26,6 +35,15 @@ char **create_2d_char_arr(int nb_str, int str_size)
 	return (arr);
 }
 
+/*
+** create_2d_int_arr =
+** Create an allocated array of a certain number of int arrays of a certain size
+**
+** @param	nb_args		Number of int arrays in the array
+** @param	size_line	Number of int in each int array
+** @return	The array with -1 at the end of each int array if
+** 		the allocation worked well OR NULL
+*/
 int **create_2d_int_arr(int nb_args, int size_line)
 {
 	int **arr = NULL;

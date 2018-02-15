@@ -1,16 +1,19 @@
 /*
 ** EPITECH PROJECT, 2017
-** [N/A]
+** [N/A] {Vincent FAIVRE}
 ** File description:
-**
-** my_strdup =
-** My main function, that's all
-**
-** @param	str	String to duplicate
-** @return	{Copy} of {str} if everything is working OR NULL
+** 1 function
 */
 #include "utils1.h"
 
+/*
+** my_strdup =
+** Malloc a string with a size equal as the string given as parameter,
+** then copy the content of it in the allocated one
+**
+** @param	str	String to duplicate
+** @return	Copy of {str} if the allocation worked OR NULL
+*/
 char *my_strdup(char const *str)
 {
 	char *copy = NULL;

@@ -1,10 +1,13 @@
 /*
 ** EPITECH PROJECT, 2017
-** [N/A]
+** [N/A] {Vincent FAIVRE}
 ** File description:
-**
+** 1 function
+*/
+
+/*
 ** my_unbrlen =
-** Get the lenghth of an unsigned int with the minus if there is one
+** Get the length of an unsigned int (count the minus if there is one)
 **
 ** @param	unbr	Unsigned number to get the length
 ** @return	The length of the {unbr}

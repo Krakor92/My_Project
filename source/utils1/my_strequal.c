@@ -1,8 +1,12 @@
 /*
 ** EPITECH PROJECT, 2017
-** [N/A]
+** [N/A] {Vincent FAIVRE}
 ** File description:
-**
+** 1 function
+*/
+#include <stdbool.h>
+
+/*
 ** my_strequal =
 ** Check that the strings given as parameters are the same
 **
@@ -11,8 +15,6 @@
 ** @return	true (1) if s1 and s2 are the same OR
 ** 		false (0) if it's not the case
 */
-#include "utils1.h"
-
 int my_strequal(const char *s1, const char *s2)
 {
 	int i = 0;

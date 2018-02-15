@@ -1,21 +1,23 @@
 /*
 ** EPITECH PROJECT, 2017
-** [N/A]
+** [N/A] {Vincent FAIVRE}
 ** File description:
-**
+** 1 function
+*/
+#include "utils1.h"
+
+/*
 ** my_strncpy =
-** Copy all or a part of the content of a str in another one
-** The str that get the content has to be bigger or equal in size
-** with the other
+** Copy all or a part of the content of a string in another one
+** The string that get the content has to be bigger or equal in size
+** with the other one
 **
 ** @param	dest	String that get the content
 ** @param	src	String which is copied
 ** @param	n	Number of char that will get copied in {dest}
-** @return	{Dest} with all or a part of {src}'s content OR
+** @return	{dest} with all or a part of {src}'s content OR
 ** 		the same {dest} if it's smaller than {src} and {n}
 */
-#include "utils1.h"
-
 char *my_strncpy(char *dest, char const *src, int n)
 {
 	int i = 0;

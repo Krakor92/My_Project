@@ -1,6 +1,6 @@
 ##
 ## EPITECH PROJECT, 2017
-## [N/A]
+## [N/A] {Vincent FAIVRE}
 ## File description:
 ## My compilation's Makefile
 ##

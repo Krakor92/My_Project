@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2017
-** my_printf_2017 -> my_printf.c
+** [MY_PRINTF] {Vincent FAIVRE}
 ** File description:
-**
+** 2 functions
 */
 #include "my_printf.h"
 

@@ -6,6 +6,13 @@
 */
 #include "my_project.h"
 
+/*
+** print_help =
+** Print the help message
+**
+** @param	N/A
+** @return	N/A
+*/
 static void print_help(void)
 {
 	my_putstr("Project created in language C by Vincent FAIVRE\n\n");
@@ -21,6 +28,14 @@ static void print_all_nb_conversion(int nb)
 	nb, nb, nb, nb);
 }
 
+/*
+** main =
+** My main function, that's all
+**
+** @param	ac	Number of program's arguments
+** @param	av	Double array that contains program's arguments
+** @return	SUCCESS(0) if everything is ok OR FAILURE(84) if it fails
+*/
 int main(int ac, char **av)
 {
 	if (ac == 2 && my_strequal(av[1], "-h")) {

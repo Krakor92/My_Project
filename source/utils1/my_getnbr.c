@@ -1,44 +1,22 @@
 /*
 ** EPITECH PROJECT, 2017
-** [N/A]
+** [N/A] {Vincent FAIVRE}
 ** File description:
-** 3 functions :
-**
-** 1. pos_or_neg =
-** Works with my_getnbr only !
-** Check whether the number in the text is negative or positive
-**
-** @param	str		String to parse
-** @param	id_first_digit	Id of the first digit encountered
-** 				in the {str}
-** @return	1 if the number is positive OR -1 if it's negative
-**
-**
-** 2. get_the_nb_bounds =
-** Works with my_getnbr only !
-** Fill the 3 ints given as parameter (with info about
-** the position of the number in the string)
-**
-** @param	str		String to parse
-** @param	id_first	Id of the first digit of the number
-** @param	id_final	Id of the last digit of the number
-** @param	nb_bounds	Said whether or not the function encountered
-**				The first digit (=1), first and last (=2)
-**				or none (=0)
-** @return	N/A
-**
-**
-** 3. my_getnbr =
-** Get the first number encountered in a str and put it in a int
-**
-** @param	str	String to parse
-** @param	nb	Int to fill
-** @return	0 if it works well (a number is present in the {str}) OR
-**		-1 if there is no number in the {str}
+** 3 functions
 */
 #include <stdio.h>
 #include "utils1.h"
 
+/*
+** pos_or_neg =
+** /!\ Works with my_getnbr only /!\
+** Check whether the number in the text is negative or positive
+**
+** @param	str		String to parse
+** @param	id_first_digit	Index of the first digit encountered
+** 				in the {str}
+** @return	1 if the number is positive OR -1 if it's negative
+*/
 static int pos_or_neg(char const *str, int *id_first_digit)
 {
 	int i = 0;
@@ -59,6 +37,20 @@ static int pos_or_neg(char const *str, int *id_first_digit)
 	return (-1);
 }
 
+/*
+** get_the_nb_bounds =
+** /!\ Works with my_getnbr only /!\
+** Fill the 3 ints given as parameter (with info about
+** the position of the number in the string)
+**
+** @param	str		String to parse
+** @param	id_first	Index of the first digit of the number
+** @param	id_final	Index of the last digit of the number
+** @param	nb_bounds	Said whether or not this function encountered
+**				The first digit (=1), first and last (=2)
+**				or none (=0)
+** @return	N/A
+*/
 static void get_the_nb_bounds(char const *str,
 				int *id_first,
 				int *id_final,
@@ -85,6 +77,15 @@ static void get_the_nb_bounds(char const *str,
 	*id_final = i - 1;
 }
 
+/*
+** my_getnbr =
+** Get the first number encountered in a str and put it in a int
+**
+** @param	str	String to parse
+** @param	nb	Int to fill
+** @return	0 if it works well (a number is present in the {str}) OR
+**		-1 if there is no number in the {str}
+*/
 int my_getnbr(char const *str, int *nb)
 {
 	int i = 0;

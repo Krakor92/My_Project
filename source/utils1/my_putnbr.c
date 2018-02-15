@@ -1,16 +1,18 @@
 /*
 ** EPITECH PROJECT, 2017
-** [N/A]
+** [N/A] {Vincent FAIVRE}
 ** File description:
-**
-** my_putnbr =
-** Print a number on the stdout
-**
-** @param	nbr	Number to print
-** @return	The length of the {nbr}
+** 1 function
 */
 #include "utils1.h"
 
+/*
+** my_putnbr =
+** Print the number given as parameter on the stdout (fd = 1)
+**
+** @param	nbr	Number to print
+** @return	The length of {nbr}
+*/
 int my_putnbr(int nbr)
 {
 	int minus = 0;

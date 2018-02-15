@@ -2,10 +2,18 @@
 ** EPITECH PROJECT, 2017
 ** [N/A] {Vincent FAIVRE}
 ** File description:
-** Create my window
+** 1 function
 */
 #include "utilsCSFML.h"
 
+/*
+** create_my_window =
+** Create a CSFML window
+**
+** @param	width	The width of the window (in pixels)
+** @param	height	The height of the window (in pixels)
+** @return	The address in memory of the window
+*/
 sfRenderWindow *create_my_window(unsigned int width, unsigned int heigth)
 {
 	sfRenderWindow *window;
@@ -15,7 +23,7 @@ sfRenderWindow *create_my_window(unsigned int width, unsigned int heigth)
 	video_mode.height = heigth;
 	video_mode.bitsPerPixel = 32;
 	window = sfRenderWindow_create(video_mode,
-					"My Hunter Window",
+					"My Window",
 					sfResize | sfClose,
 					NULL);
 	sfRenderWindow_setFramerateLimit(window, 60);

@@ -1,9 +1,8 @@
 /*
 ** EPITECH PROJECT, 2017
-** head_n_tail_dlist.c
+** [N/A] {Vincent FAIVRE}
 ** File description:
-** File that regroup functions whose are related to
-** head and tail of dlists
+** Functions whose are related to the head and tail of dlists
 */
 #include "str_dlist.h"
 

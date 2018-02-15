@@ -1,10 +1,13 @@
 /*
 ** EPITECH PROJECT, 2017
-** [N/A]
+** [N/A] {Vincent FAIVRE}
 ** File description:
-**
+** 1 function
+*/
+
+/*
 ** my_strlen =
-** Count the number of character in the {str}
+** Count the number of character in the string given as parameter
 **
 ** @param	str	String to parse
 ** @return	The length of {str}

@@ -1,23 +1,17 @@
 /*
 ** EPITECH PROJECT, 2017
-** [Minishell1]
+** [N/A] {Vincent FAIVRE}
 ** File description:
-**
+** 2 functions
+*/
+
+/*
 ** my_char_count =
 ** Count the number of occurence of a char in a str
 **
 ** @param	str	String to parse
 ** @param	c	Character to count
 ** @return	Number of {c} in {str}
-**
-**
-** my_line_char_count =
-** Count the number of occurence of a char in a str line
-**
-** @param	str	String to parse
-** @param	c	Character to count
-** @param	line	Line of the {str} where you count {c}
-** @return	Number of {c} in a {line} of {str}
 */
 int my_char_count(char *str, char c)
 {
@@ -30,6 +24,15 @@ int my_char_count(char *str, char c)
 	return (i);
 }
 
+/*
+** my_line_char_count =
+** Count the number of occurence of a char in a str line
+**
+** @param	str	String to parse
+** @param	c	Character to count
+** @param	line	Line of the {str} where you count {c}
+** @return	Number of {c} in a {line} of {str}
+*/
 int my_line_char_count(char *str, char c, int line)
 {
 	int i = 0;
