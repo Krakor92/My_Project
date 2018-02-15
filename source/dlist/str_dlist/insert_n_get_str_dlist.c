@@ -5,7 +5,7 @@
 ** File that regroup functions whose are related to
 ** head and tail of dlists
 */
-#include "double_str_list.h"
+#include "str_dlist.h"
 
 int get_dlist_length(DListCore_ptr dlist)
 {

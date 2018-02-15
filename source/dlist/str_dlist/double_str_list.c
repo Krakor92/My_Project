@@ -5,7 +5,7 @@
 ** File that contain function that are relative to
 ** basics double linked lists
 */
-#include "double_str_list.h"
+#include "str_dlist.h"
 
 DListCore_ptr get_new_dlist(void)
 {

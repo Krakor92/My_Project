@@ -4,7 +4,7 @@
 ** File description:
 ** File that regroup function that delete or clean dlist
 */
-#include "double_str_list.h"
+#include "str_dlist.h"
 
 int delete_head_dlist(DListCore_ptr dlist)
 {
