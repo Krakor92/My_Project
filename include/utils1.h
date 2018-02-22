@@ -4,6 +4,7 @@
 ** File description:
 ** Utils functions header
 */
+
 #ifndef UTILS1_H
 	#define UTILS1_H
 

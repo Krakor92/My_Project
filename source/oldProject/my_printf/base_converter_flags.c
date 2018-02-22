@@ -4,6 +4,7 @@
 ** File description:
 ** 4 functions
 */
+
 #include "my_printf.h"
 
 int	b_flag(va_list ap)

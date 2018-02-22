@@ -4,6 +4,7 @@
 ** File description:
 ** 5 functions
 */
+
 #include "my_printf.h"
 
 int	dec_to_binary_base(unsigned int dec_int)

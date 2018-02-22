@@ -4,6 +4,7 @@
 ** File description:
 ** 2 functions
 */
+
 #include "my_printf.h"
 
 int	percent_flag(va_list ap)

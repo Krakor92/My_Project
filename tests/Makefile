@@ -38,6 +38,7 @@ SRC	=	$(SRC_DIR)str_dlist/delete_dlist.c	\
 		$(SRC_DIR)utils2/2d_arrays/create_2d_arr.c	\
 		$(SRC_DIR)utils2/2d_arrays/destroy_2d_arr.c	\
 		$(SRC_DIR)utilsCSFML/create_2d_sfVector.c	\
+		$(SRC_DIR)utilsCSFML/create_my_window.c	\
 		$(SRC_DIR)utilsCSFML/create_sfRect.c
 
 SRC_UT	=	$(SRC_UT_DIR)unit_tests.c

@@ -4,12 +4,14 @@
 ** File description:
 ** Functions that are relative to the basics of double linked lists
 */
+
 #include "str_dlist.h"
 
-DListCore_ptr get_new_dlist(void)
+DListIndex_t *get_new_dlist(void)
 {
-	DListCore_ptr dlist;
-	dlist = malloc(sizeof(*dlist));
+	DListIndex_t *dlist;
+
+	dlist = malloc(sizeof(DListIndex_t));
 	if (dlist == NULL)
 		return (NULL);
 	dlist->length = 0;
@@ -18,26 +20,27 @@ DListCore_ptr get_new_dlist(void)
 	return (dlist);
 }
 
-DListNode_ptr get_new_node(char *str)
+DListNode_t *get_new_node(char *str)
 {
-	DListNode_ptr newnode;
-	newnode = malloc(sizeof(*newnode));
+	DListNode_t *newnode;
+
+	newnode = malloc(sizeof(DListNode_t));
 	if (newnode == NULL)
-		return (NULL);
+		return (my_ptr_error(INVALID_MALLOC));
 	newnode->val = str;
 	newnode->next = NULL;
 	newnode->prev = NULL;
 	return (newnode);
 }
 
-int dlist_is_null(DListCore_ptr dlist)
+int dlist_is_null(DListIndex_t *dlist)
 {
 	if (dlist == NULL)
 		return (true);
 	return (false);
 }
 
-int dlist_is_empty(DListCore_ptr dlist)
+int dlist_is_empty(DListIndex_t *dlist)
 {
 	if (dlist->length == 0 && dlist->head == NULL && dlist->tail == NULL)
 		return (true);

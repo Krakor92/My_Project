@@ -4,6 +4,7 @@
 ** File description:
 ** Init OR Set the value of sfRect
 */
+
 #include "utilsCSFML.h"
 
 /*

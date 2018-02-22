@@ -4,6 +4,7 @@
 ** File description:
 ** 2 functions
 */
+
 #include "my_printf.h"
 
 const converter_t converter_arr[] =

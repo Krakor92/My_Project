@@ -4,61 +4,62 @@
 ** File description:
 ** Functions whose are related to the head and tail of dlists
 */
+
 #include "str_dlist.h"
 
-int get_dlist_length(DListCore_ptr dlist)
+int get_dlist_length(DListIndex_t *dlist)
 {
 	if (dlist_is_null(dlist))
 		return (-1);
 	return (dlist->length);
 }
 
-char *get_dlist_head_value(DListCore_ptr dlist)
+char *get_dlist_head_value(DListIndex_t *dlist)
 {
 	if (dlist_is_null(dlist) || dlist_is_empty(dlist))
-		return (0);
+		return (NULL);
 	return (dlist->head->val);
 }
 
-char *get_dlist_tail_value(DListCore_ptr dlist)
+char *get_dlist_tail_value(DListIndex_t *dlist)
 {
 	if (dlist_is_null(dlist) || dlist_is_empty(dlist))
 		return (0);
 	return (dlist->tail->val);
 }
 
-int insert_head_dlist(DListCore_ptr dlist, char *str)
+int insert_head_dlist(DListIndex_t *dlist, char *str)
 {
-	DListNode_ptr element;
+	DListNode_t *element;
 	element = get_new_node(str);
+
 	if (element == NULL)
 		return (-1);
-
 	if (dlist_is_null(dlist)) {
 		dlist = get_new_dlist();
 		if (dlist == NULL)
 			return (-1);
 	}
 	if (dlist_is_empty(dlist)) {
-		dlist->length += 1;
+		dlist->length++;
 		dlist->head = element;
 		dlist->tail = element;
 	} else {
-		dlist->length += 1;
-		dlist->head->prev = element;
-		element->next = dlist->head;
+		dlist->length++;
+		dlist->head->next = element;
+		element->prev = dlist->head;
 		dlist->head = element;
 	}
 	return (0);
 }
 
-int insert_tail_dlist(DListCore_ptr dlist, char *str)
+int insert_tail_dlist(DListIndex_t *dlist, char *str)
 {
-	DListNode_ptr element;
+	DListNode_t *element;
 	element = get_new_node(str);
+
 	if (element == NULL)
 		return (-1);
-
 	if (dlist_is_null(dlist)) {
 		dlist = get_new_dlist();
 		if (dlist == NULL)
@@ -70,8 +71,8 @@ int insert_tail_dlist(DListCore_ptr dlist, char *str)
 		dlist->tail = element;
 	} else {
 		dlist->length += 1;
-		dlist->tail->next = element;
-		element->prev = dlist->tail;
+		dlist->tail->prev = element;
+		element->next = dlist->tail;
 		dlist->tail = element;
 	}
 	return (0);

@@ -14,11 +14,10 @@
 ##
 ## lib: c_graph_prog (CSFML), m (math)...
 ##
-CC	=	gcc
+
+CC	=	gcc -lc_graph_prog
 
 CFLAGS	+=	-W -Wall -Wextra -pedantic -g3 -std=c99 -I include/
-
-LDFLAGS	+=	-lc_graph_prog
 
 RM	=	rm -f
 
@@ -53,6 +52,7 @@ SRC	=	$(SRC_DIR)oldProject/my_printf/base_converter_flags.c	\
 		$(SRC_DIR)utils2/2d_arrays/create_2d_arr.c	\
 		$(SRC_DIR)utils2/2d_arrays/destroy_2d_arr.c	\
 		$(SRC_DIR)utilsCSFML/create_2d_sfVector.c	\
+		$(SRC_DIR)utilsCSFML/create_my_window.c	\
 		$(SRC_DIR)utilsCSFML/create_sfRect.c	\
 		$(SRC_DIR)main.c
 

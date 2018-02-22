@@ -4,6 +4,7 @@
 ** File description:
 ** Init OR Set the value of sfVector2f/u
 */
+
 #include "utilsCSFML.h"
 
 /*
