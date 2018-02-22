@@ -1,12 +1,12 @@
 /*
 ** EPITECH PROJECT, 2017
-** [MY_WORLD]
+** [N/A] {Vincent FAIVRE}
 ** File description:
-** My World's Header
+** My Project's Header
 */
 
-#ifndef MY_WORLD_H
-	#define MY_WORLD_H
+#ifndef MY_PROJECT_H
+	#define MY_PROJECT_H
 
 	/* Library */
 	#include <stdio.h>
