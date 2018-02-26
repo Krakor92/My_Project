@@ -59,6 +59,8 @@ static void get_the_nb_bounds(char const *str,
 {
 	int i = 0;
 
+	if (str == NULL)
+		return;
 	while (str[i] != '\0') {
 		if (IS_NUMBER(str[i])) {
 			if (*nb_bounds == 0) {

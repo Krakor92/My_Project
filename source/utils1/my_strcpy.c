@@ -22,6 +22,8 @@ char *my_strcpy(char *dest, char const *src)
 {
 	int i = 0;
 
+	if (dest == NULL || src == NULL)
+		return (NULL);
 	if (my_strlen(dest) < my_strlen(src))
 		return (dest);
 	while (src[i] != '\0') {

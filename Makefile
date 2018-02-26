@@ -14,6 +14,14 @@
 ##
 ## lib: c_graph_prog (CSFML), m (math)...
 ##
+## SI VOUS COPIEZ CE DOSSIER POUR UN PROJET, VOUS DEVEZ:
+## - Retirer ou Ajouter des fichiers à compiler (.c ou .h)
+## - Changer le $(NAME) du binaire
+## - Changer le nom du header my_project.h avec votre nom de projet
+## - Ajouter ou retirer des librairies
+## - Changer le contenu de my_project.h en fonction des fonctions retirées
+## - Faire de même dans le dossier $(UT_DIR)
+##
 
 CC	=	gcc -lc_graph_prog
 
@@ -35,8 +43,10 @@ SRC	=	$(SRC_DIR)oldProject/my_printf/base_converter_flags.c	\
 		$(SRC_DIR)dlist/str_dlist/insert_n_get_str_dlist.c	\
 		$(SRC_DIR)utils1/my_char_count.c	\
 		$(SRC_DIR)utils1/my_getnbr.c	\
+		$(SRC_DIR)utils1/my_getnchar_id.c	\
 		$(SRC_DIR)utils1/my_int_error.c	\
 		$(SRC_DIR)utils1/my_nbrlen.c	\
+		$(SRC_DIR)utils1/my_nlinelen.c	\
 		$(SRC_DIR)utils1/my_ptr_error.c	\
 		$(SRC_DIR)utils1/my_putchar.c	\
 		$(SRC_DIR)utils1/my_putnbr.c	\
@@ -54,6 +64,7 @@ SRC	=	$(SRC_DIR)oldProject/my_printf/base_converter_flags.c	\
 		$(SRC_DIR)utilsCSFML/create_2d_sfVector.c	\
 		$(SRC_DIR)utilsCSFML/create_my_window.c	\
 		$(SRC_DIR)utilsCSFML/create_sfRect.c	\
+		$(SRC_DIR)utilsCSFML/handle_events.c	\
 		$(SRC_DIR)main.c
 
 OBJ	=	$(SRC:.c=.o)

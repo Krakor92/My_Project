@@ -28,5 +28,5 @@ int my_putnbr(int nbr)
 		my_putchar('0' + nbr % 10);
 	} else
 		my_putchar('0' + nbr);
-	return (my_nbrlen(nbr) + minus);
+	return (my_nbrlen(nbr, NO) + minus);
 }

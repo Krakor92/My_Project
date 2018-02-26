@@ -5,6 +5,8 @@
 ** 2 functions
 */
 
+#include <stdio.h>
+
 /*
 ** my_char_count =
 ** Count the number of occurence of a char in a str
@@ -13,15 +15,18 @@
 ** @param	c	Character to count
 ** @return	Number of {c} in {str}
 */
-int my_char_count(char *str, char c)
+int my_char_count(const char *str, char c)
 {
 	int i = 0;
+	int j = 0;
 
-	for(; *str != 0; str++) {
-		if (*str == c)
-			++i;
+	if (str == NULL)
+		return (-1);
+	for(i = 0; str[i] != 0; i++) {
+		if (str[i] == c)
+			j++;
 	}
-	return (i);
+	return (j);
 }
 
 /*
