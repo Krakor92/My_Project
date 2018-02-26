@@ -10,6 +10,7 @@
 
 	/* Library */
 	#include <stdio.h>
+	#include "get_next_line.h"
 	#include "str_dlist.h"
 	#include "my_printf.h"
 	#include "utils1.h"

@@ -23,6 +23,7 @@ SRC	=	$(SRC_DIR)oldProject/my_printf/base_converter_flags.c	\
 		$(SRC_DIR)oldProject/my_printf/basic_flags.c	\
 		$(SRC_DIR)oldProject/my_printf/my_printf.c	\
 		$(SRC_DIR)oldProject/my_printf/specific_flags.c	\
+		$(SRC_DIR)oldProject/get_next_line.c	\
 		$(SRC_DIR)dlist/str_dlist/delete_dlist.c	\
 		$(SRC_DIR)dlist/str_dlist/double_str_list.c	\
 		$(SRC_DIR)dlist/str_dlist/insert_n_get_str_dlist.c	\
@@ -55,7 +56,8 @@ SRC_UT	=	$(SRC_UT_DIR)utils1_tests.c
 
 OBJ	=	$(SRC:.c=.o) $(SRC_UT:.c=.o)
 
-HDR	=	$(HDR_DIR)str_dlist.h	\
+HDR	=	$(HDR_DIR)get_next_line.h	\
+		$(HDR_DIR)str_dlist.h	\
 		$(HDR_DIR)my_printf.h	\
 		$(HDR_DIR)my_project.h	\
 		$(HDR_DIR)utils1.h	\
