@@ -13,6 +13,7 @@
 	#include "get_next_line.h"
 	#include "str_dlist.h"
 	#include "my_printf.h"
+	#include "my_struct.h"
 	#include "utils1.h"
 	#include "utils2.h"
 	#include "utilsCSFML.h"
