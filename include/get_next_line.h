@@ -4,6 +4,7 @@
 ** File description:
 ** Get_next_line's header
 */
+
 #ifndef GETNEXTLINE_H
 	#define GETNEXTLINE_H
 	#define READ_SIZE 1

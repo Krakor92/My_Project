@@ -9,7 +9,15 @@
 	#define UTILS2_H
 
 	/* Library */
+	#include <fcntl.h>
+	#include <sys/stat.h>
+	#include <sys/types.h>
 	#include "utils1.h"
+
+	/* Constants */
+	static const char INVALID_OPEN[] = "Invalid open!\n";
+	static const char INVALID_READ[] = "Invalid read!\n";
+	static const char INVALID_STAT[] = "Invalid stat!\n";
 
 	/* Prototypes */
 	//2d_arrays//
@@ -19,5 +27,7 @@
 	//destroy_2d_arr.c
 	void destroy_2d_char_arr(char**);
 	void destroy_2d_int_arr(int**);
+	//file//
+
 
 #endif

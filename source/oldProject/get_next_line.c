@@ -4,6 +4,7 @@
 ** File description:
 ** Get the next line of a text each time you call it
 */
+
 #include "get_next_line.h"
 #include "utils1.h"
 
@@ -75,6 +76,4 @@ char *get_next_line(int fd)
 		return (my_ptr_error(INVALID_MALLOC));
 	str = read_loop(fd, str);
 	return (str);
-
-
 }

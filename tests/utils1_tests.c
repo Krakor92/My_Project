@@ -201,3 +201,72 @@ Test(my_strcpy, errorTests)
 	my_strcpy(arr, str);
 	cr_assert_str_eq(arr, str);
 }
+
+/**************
+* my_strlen.c *
+**************/
+Test(my_strlen, basicTests1)
+{
+	char str[] = "BUM BUM TAM TAM";
+	char s[] = "BUM B";
+	int str_len;
+	char *arr = NULL;
+	return;
+
+	str_len = my_strlen(s);
+	cr_assert_eq(str_len, 5);
+	arr = malloc(sizeof(char) * str_len);
+	if (arr == NULL)
+		return;
+	my_strncpy(arr, str, 5);
+	cr_assert_str_eq(arr, s);
+	free(arr);
+}
+
+/***************
+* my_strncpy.c *
+***************/
+Test(my_strncpy, basicTests1)
+{
+	char str[] = "BUM BUM TAM TAM";
+	char s[] = "BUM B";
+	int str_len;
+	char *arr = NULL;
+	return;
+
+	str_len = my_strlen(s);
+	cr_assert_eq(str_len, 5);
+	arr = malloc(sizeof(char) * str_len);
+	if (arr == NULL)
+		return;
+	my_strncpy(arr, str, 5);
+	cr_assert_str_eq(arr, s);
+	free(arr);
+}
+
+Test(my_strncpy, basicTests2)
+{
+	char str[] = "BUM BUM TAM TAM";
+	int str_len;
+	char *arr = NULL;
+	return;
+
+	str_len = my_strlen(str);
+	cr_assert_eq(str_len, 15);
+	arr = malloc(sizeof(char) * str_len);
+	if (arr == NULL)
+		return;
+	my_strncpy(arr, str, 20);
+	cr_assert_str_eq(arr, str);
+	free(arr);
+}
+/*
+Test(my_strncpy, errorTests)
+{
+	char *str = NULL;
+	char *arr = NULL;
+
+	my_strncpy(arr, str, 5);
+	cr_assert_str_eq(arr, str);
+}
+*/

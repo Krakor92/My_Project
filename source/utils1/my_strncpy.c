@@ -34,3 +34,27 @@ char *my_strncpy(char *dest, char const *src, int n)
 	dest[i] = '\0';
 	return (dest);
 }
+
+int my_strcpy_from_a_to_b(char *dest, char const *src, int a, int b)
+{
+	int cpt = 0;
+
+	while (a <= b) {
+		dest[cpt] = src[a];
+		a++;
+		cpt++;
+	}
+	return (0);
+}
+
+int my_strcpy_untill_char(char *dest, char const *src, char last_char)
+{
+	int cpt = 0;
+
+	while ((src[cpt] != last_char) && (src[cpt] != '\0')) {
+		dest[cpt] = src[cpt];
+		cpt += 1;
+	}
+	dest[cpt] = '\0';
+	return (0);
+}
