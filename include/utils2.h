@@ -28,6 +28,6 @@
 	void destroy_2d_char_arr(char**);
 	void destroy_2d_int_arr(int**);
 	//file//
-
-
+	//copy_file_in_str.c
+	char *copy_file_in_str(char*);
 #endif
