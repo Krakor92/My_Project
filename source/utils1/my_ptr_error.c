@@ -17,5 +17,5 @@
 void *my_ptr_error(char const *str)
 {
 	my_putstr_error(str);
-	return (NULL);
+	return NULL;
 }

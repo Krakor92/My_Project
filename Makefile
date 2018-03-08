@@ -12,7 +12,7 @@
 ## $@ -> La cible courante (cible de la règle où on se trouve)
 ## $< -> Représente la première dépendance
 ##
-## lib: c_graph_prog (CSFML), m (math)...
+## lib: c_graph_prog (CSFML), m (math), ncurses (<-)...
 ##
 ## SI VOUS COPIEZ CE DOSSIER POUR UN PROJET, VOUS DEVEZ:
 ## - Retirer ou Ajouter des fichiers à compiler (.c ou .h)
@@ -43,6 +43,7 @@ SRC	=	$(SRC_DIR)oldProject/my_printf/base_converter_flags.c	\
 		$(SRC_DIR)dlist/str_dlist/double_str_list.c	\
 		$(SRC_DIR)dlist/str_dlist/insert_n_get_str_dlist.c	\
 		$(SRC_DIR)utils1/my_char_count.c	\
+		$(SRC_DIR)utils1/my_checkstr.c	\
 		$(SRC_DIR)utils1/my_getnbr.c	\
 		$(SRC_DIR)utils1/my_getnchar_id.c	\
 		$(SRC_DIR)utils1/my_int_error.c	\

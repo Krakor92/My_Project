@@ -22,39 +22,36 @@
 char *my_strncpy(char *dest, char const *src, int n)
 {
 	int i = 0;
-	int dest_len = my_strlen(dest);
-	int src_len = my_strlen(src);
 
-	if (dest_len < src_len && n > dest_len)
-		return(dest);
 	while ((i < n) && (src[i] != '\0')) {
 		dest[i] = src[i];
-		++i;
+		i++;
 	}
 	dest[i] = '\0';
-	return (dest);
+	return dest;
 }
 
-int my_strcpy_from_a_to_b(char *dest, char const *src, int a, int b)
+char *my_strcpy_from_a_to_b(char *dest, char const *src, int a, int b)
 {
-	int cpt = 0;
+	int i = 0;
 
-	while (a <= b) {
-		dest[cpt] = src[a];
+	while (a <= b && (src[a] != 0)) {
+		dest[i] = src[a];
 		a++;
-		cpt++;
+		i++;
 	}
-	return (0);
+	dest[i] = 0;
+	return dest;
 }
 
-int my_strcpy_untill_char(char *dest, char const *src, char last_char)
+char *my_strcpy_untill_char(char *dest, char const *src, char last_char)
 {
-	int cpt = 0;
+	int i = 0;
 
-	while ((src[cpt] != last_char) && (src[cpt] != '\0')) {
-		dest[cpt] = src[cpt];
-		cpt += 1;
+	while ((src[i] != last_char) && (src[i] != 0)) {
+		dest[i] = src[i];
+		i++;
 	}
-	dest[cpt] = '\0';
-	return (0);
+	dest[i] = 0;
+	return dest;
 }

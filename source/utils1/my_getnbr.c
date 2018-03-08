@@ -18,24 +18,21 @@
 ** 				in the {str}
 ** @return	1 if the number is positive OR -1 if it's negative
 */
-static int pos_or_neg(char const *str, int *id_first_digit)
+static int pos_or_neg(char const *str, int id_first_digit)
 {
 	int i = 0;
 	int minus_count = 0;
 
-	while (i < *id_first_digit) {
-		if (str[i] == '-') {
-			minus_count += 1;
-		}
-		else if (str[i] != '+') {
+	while (i < id_first_digit) {
+		if (str[i] == '-')
+			minus_count++;
+		else if (str[i] != '+')
 			minus_count = 0;
-		}
-		i += 1;
+		i++;
 	}
-	if ((minus_count % 2) == 0) {
-		return (1);
-	}
-	return (-1);
+	if ((minus_count % 2) == 0)
+		return 1;
+	return -1;
 }
 
 /*
@@ -73,7 +70,7 @@ static void get_the_nb_bounds(char const *str,
 			*nb_bounds = 2;
 			return;
 		}
-		i += 1;
+		i++;
 	}
 	if (*nb_bounds == 0)
 		return;
@@ -100,14 +97,14 @@ int my_getnbr(char const *str, int *nb)
 	*nb = 0;
 	get_the_nb_bounds(str, &id_first, &id_final, &nb_limit);
 	if (nb_limit == 0 || ((id_final - id_first + 1) > 10))
-		return (-1);
-	p_or_n = pos_or_neg(str, &id_first);
+		return -1;
+	p_or_n = pos_or_neg(str, id_first);
 	for (i = id_first; i <= id_final; i += 1)
 		*nb = *nb * 10 + (str[i] - '0');
 	if ((id_final - id_first + 1) == 10) {
 		if ((str[id_final - 9] > '2') || (*nb < 0))
-			return (-1);
+			return -1;
 	}
 	*nb = *nb * p_or_n;
-	return (0);
+	return 0;
 }

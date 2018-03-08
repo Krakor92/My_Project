@@ -23,10 +23,10 @@ unsigned int my_nbrlen(int nbr, int count_minus)
 	if (nbr == 0)
 		return (1);
 	if (nbr < 0 && count_minus == YES)
-		++nbr_len;
+		nbr_len++;
 	while (nbr != 0) {
 		nbr /= 10;
-		++nbr_len;
+		nbr_len++;
 	}
-	return (nbr_len);
+	return nbr_len;
 }

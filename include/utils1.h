@@ -29,6 +29,8 @@
 	int my_char_count(const char*, char);
 	int my_line_char_count(char*, char, int);
 	//
+	//my_checkstr.c
+	int my_checkstr(char*, char*);
 	int my_getnbr(char const*, int*);
 	int my_getnchar_id(char const*, char, int);
 	int my_int_error(char const*);
@@ -47,6 +49,9 @@
 	char *my_strdup(char const*);
 	int my_strequal(const char*, const char*);
 	int my_strlen(char const*);
+	//my_strncpy.c
 	char *my_strncpy(char*, char const*, int);
+	char *my_strcpy_from_a_to_b(char*, char const*, int, int);
+	char *my_strcpy_untill_char(char*, char const*, char);
 	unsigned int my_unbrlen(unsigned int);
 #endif

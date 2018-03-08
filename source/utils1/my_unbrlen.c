@@ -17,10 +17,10 @@ unsigned int my_unbrlen(unsigned int unbr)
 	int unbr_len = 0;
 
 	if (unbr == 0)
-		return (1);
+		return 1;
 	while (unbr != 0) {
 		unbr /= 10;
-		++unbr_len;
+		unbr_len++;
 	}
-	return (unbr_len);
+	return unbr_len;
 }

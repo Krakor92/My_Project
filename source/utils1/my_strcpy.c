@@ -22,14 +22,10 @@ char *my_strcpy(char *dest, char const *src)
 {
 	int i = 0;
 
-	if (dest == NULL || src == NULL)
-		return (NULL);
-	if (my_strlen(dest) < my_strlen(src))
-		return (dest);
 	while (src[i] != '\0') {
 		dest[i] = src[i];
-		++i;
+		i++;
 	}
 	dest[i] = '\0';
-	return (dest);
+	return dest;
 }

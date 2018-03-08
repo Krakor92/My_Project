@@ -17,5 +17,5 @@
 int my_int_error(char const *str)
 {
 	my_putstr_error(str);
-	return (-1);
+	return -1;
 }

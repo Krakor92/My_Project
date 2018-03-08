@@ -16,12 +16,14 @@ char *copy_file_in_str(char *file)
 	int len;
 
 	fd = open(file, O_RDONLY);
-	if (fd  == -1)
+	if (fd == -1)
 		return (my_ptr_error(INVALID_OPEN));
 	retstat = stat(file, &info);
 	if (retstat == -1)
 		return (my_ptr_error(INVALID_STAT));
 	str = malloc(sizeof(char) * (info.st_size + 1));
+	if (!str)
+		return (my_ptr_error(INVALID_MALLOC));
 	len = read(fd, str, info.st_size);
 	if (len < 0)
 		return (my_ptr_error(INVALID_READ));

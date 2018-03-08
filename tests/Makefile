@@ -28,6 +28,7 @@ SRC	=	$(SRC_DIR)oldProject/my_printf/base_converter_flags.c	\
 		$(SRC_DIR)dlist/str_dlist/double_str_list.c	\
 		$(SRC_DIR)dlist/str_dlist/insert_n_get_str_dlist.c	\
 		$(SRC_DIR)utils1/my_char_count.c	\
+		$(SRC_DIR)utils1/my_checkstr.c	\
 		$(SRC_DIR)utils1/my_getnbr.c	\
 		$(SRC_DIR)utils1/my_getnchar_id.c	\
 		$(SRC_DIR)utils1/my_int_error.c	\

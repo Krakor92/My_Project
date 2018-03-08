@@ -23,13 +23,13 @@ int my_getnchar_id(char const *str, char c, int n)
 	int j = 0;
 
 	if (str == NULL || n <= 0)
-		return (-1);
+		return -1;
 	while (str[i] != '\0') {
 		if (str[i] == c)
 			j++;
 		if (j == n)
-			return (i);
-		++i;
+			return i;
+		i++;
 	}
-	return (-1);
+	return -1;
 }

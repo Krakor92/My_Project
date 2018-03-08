@@ -21,12 +21,12 @@ int my_char_count(const char *str, char c)
 	int j = 0;
 
 	if (str == NULL)
-		return (-1);
-	for(i = 0; str[i] != 0; i++) {
+		return -1;
+	for (i = 0; str[i] != 0; i++) {
 		if (str[i] == c)
 			j++;
 	}
-	return (j);
+	return j;
 }
 
 /*
@@ -38,18 +38,19 @@ int my_char_count(const char *str, char c)
 ** @param	line	Line of the {str} where you count {c}
 ** @return	Number of {c} in a {line} of {str}
 */
-int my_line_char_count(char *str, char c, int line)
+int my_line_char_count(const char *str, char c, int line)
 {
 	int i = 0;
+	int j = 0;
 	int cur_line = 1;
 
-	for(; *str != 0; str++) {
-		if (*str == '\n')
-			++cur_line;
-		if (cur_line == line && *str == c)
-			++i;
+	for (i = 0; str[i] != 0; i++) {
+		if (str[i] == '\n')
+			cur_line++;
+		if (cur_line == line && str[i] == c)
+			j++;
 		if (cur_line > line)
-			return (i);
+			return j;
 	}
-	return (i);
+	return j;
 }

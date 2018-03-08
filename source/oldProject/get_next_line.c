@@ -19,28 +19,28 @@ static char get_next_char(int fd)
 		char_read = read(fd, buffer, READ_SIZE);
 		cpt = 0;
 		if (char_read <= 0)
-			return ('\0');
+			return '\0';
 	}
 	new_char = buffer[cpt];
 	cpt += 1;
 	char_read -= 1;
-	return (new_char);
+	return new_char;
 }
 
 static char *str_realloc(char* old_str, int size, int new_size)
 {
-	char *new_str = malloc(sizeof(char) * new_size);
+	char *new_str = malloc(new_size * sizeof *new_str);
 	int cpt = 0;
 
 	if (new_str == NULL)
-		return (NULL);
+		return NULL;
 	while (cpt < size) {
 		new_str[cpt] = old_str[cpt];
-		cpt += 1;
+		cpt++;
 	}
 	free(old_str);
 	old_str = NULL;
-	return (new_str);
+	return new_str;
 }
 
 static char *read_loop(int fd, char *str)
@@ -53,16 +53,16 @@ static char *read_loop(int fd, char *str)
 	while (next_char != '\n' && next_char != '\0') {
 		str[len] = next_char;
 		next_char = get_next_char(fd);
-		len += 1;
+		len++;
 		if (len == read_size) {
 			str = str_realloc(str, len, len + 1);
 			read_size += 1;
 			if (str == NULL)
-				return (my_ptr_error(INVALID_MALLOC));
+				return my_ptr_error(INVALID_MALLOC);
 		}
 	}
 	str[len] = '\0';
-	return (str);
+	return str;
 }
 
 char *get_next_line(int fd)

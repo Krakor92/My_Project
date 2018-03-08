@@ -21,11 +21,11 @@ sfVector2f *init_sfVector2f(double valx, double valy)
 	sfVector2f *fpoint = NULL;
 
 	fpoint = malloc(sizeof(sfVector2f));
-	if (fpoint == NULL)
-		return (my_ptr_error(INVALID_MALLOC));
+	if (!fpoint)
+		return my_ptr_error(INVALID_MALLOC);
 	fpoint->x = valx;
 	fpoint->y = valy;
-	return (fpoint);
+	return fpoint;
 }
 
 /*
