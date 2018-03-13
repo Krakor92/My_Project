@@ -14,6 +14,7 @@
 ** @param	N/A
 ** @return	N/A
 */
+
 static void print_help(void)
 {
 	my_putstr("Project created in language C by Vincent FAIVRE\n\n");
@@ -25,7 +26,7 @@ static void print_help(void)
 
 static void print_all_nb_conversion(int nb)
 {
-	my_printf("%d\nEn binaire = %b\nEn octal = %o\nEn hexadécimal = %x\n",
+	my_printf("%d\nIn binary = %b\nIn octal = %o\nIn hexadecimal = %X\n",
 	nb, nb, nb, nb);
 }
 
@@ -39,10 +40,20 @@ static void print_all_nb_conversion(int nb)
 */
 int main(int ac, char **av)
 {
+	int nb;
+
 	if (ac == 2 && my_strequal(av[1], "-h")) {
 		print_help();
-		return (SUCCESS);
+		return SUCCESS;
 	}
-	print_all_nb_conversion(120);
-	return (SUCCESS);
+	if (ac != 2) {
+		my_putstr_error("A number is needed!\n");
+		return FAILURE;
+	}
+	if (my_getnbr(av[1], &nb) == -1) {
+		my_putstr_error("A number is needed!\n");
+		return FAILURE;
+	}
+	print_all_nb_conversion(nb);
+	return SUCCESS;
 }

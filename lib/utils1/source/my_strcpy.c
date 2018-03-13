@@ -22,9 +22,12 @@ char *my_strcpy(char *dest, char const *src)
 {
 	int i = 0;
 
-	while (src[i] != '\0') {
-		dest[i] = src[i];
+	if (!dest || !src)
+		return NULL;
+	while (*src != '\0') {
+		dest[i] = *src;
 		i++;
+		src++;
 	}
 	dest[i] = '\0';
 	return dest;

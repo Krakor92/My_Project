@@ -20,7 +20,7 @@ int my_char_count(const char *str, char c)
 	int i = 0;
 	int j = 0;
 
-	if (str == NULL)
+	if (!str)
 		return -1;
 	for (i = 0; str[i] != 0; i++) {
 		if (str[i] == c)
@@ -44,7 +44,7 @@ int my_line_char_count(const char *str, char c, int line)
 	int j = 0;
 	int cur_line = 1;
 
-	for (i = 0; str[i] != 0; i++) {
+	for (i = 0; str[i] != '\0'; i++) {
 		if (str[i] == '\n')
 			cur_line++;
 		if (cur_line == line && str[i] == c)

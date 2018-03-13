@@ -23,13 +23,12 @@ int my_nlinelen(char const *str, int nline, int count_newline)
 	int i = 0;
 	int j = 0;
 
-	if (str == NULL || nline <= 0 || nline > nb_lines)
+	if (!str || nline <= 0 || nline > nb_lines)
 		return -1;
 	if (nline == 1) {
 		for (; str[i] != '\n' && str[i] != '\0'; i++)
 			j++;
-	}
-	else {
+	} else {
 		i = my_getnchar_id(str, '\n', nline - 1) + 1;
 		for (; str[i] != '\n' && str[i] != '\0'; i++)
 			j++;

@@ -28,5 +28,5 @@ sfRenderWindow *create_my_window(unsigned int width, unsigned int heigth)
 					sfResize | sfClose,
 					NULL);
 	sfRenderWindow_setFramerateLimit(window, 60);
-	return (window);
+	return window;
 }

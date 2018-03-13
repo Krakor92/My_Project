@@ -22,7 +22,7 @@ char *my_strdup(char const *str)
 	int i = 0;
 
 	copy = malloc((str_len + 1) * sizeof *copy);
-	if (copy == NULL)
+	if (!copy)
 		return my_ptr_error(INVALID_MALLOC);
 	while (*str != '\0') {
 		copy[i] = *str;

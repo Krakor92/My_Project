@@ -44,11 +44,17 @@ char *my_strcpy_from_a_to_b(char *dest, char const *src, int a, int b)
 	return dest;
 }
 
-char *my_strcpy_untill_char(char *dest, char const *src, char last_char)
+char *my_strcpy_till_char(char *dest, char const *src, char lchar, int count_it)
 {
 	int i = 0;
 
-	while ((src[i] != last_char) && (src[i] != 0)) {
+	if (!dest || !src)
+		return NULL;
+	while ((src[i] != lchar) && (src[i] != 0)) {
+		dest[i] = src[i];
+		i++;
+	}
+	if (count_it == YES && src[i] == lchar) {
 		dest[i] = src[i];
 		i++;
 	}

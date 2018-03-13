@@ -9,40 +9,40 @@
 
 DListIndex_t *get_new_dlist(void)
 {
-	DListIndex_t *dlist;
+	DListIndex_t *dlist = NULL;
 
-	dlist = malloc(sizeof(DListIndex_t));
-	if (dlist == NULL)
-		return (NULL);
+	dlist = malloc(sizeof *dlist);
+	if (!dlist)
+		return my_ptr_error(INVALID_MALLOC);
 	dlist->length = 0;
 	dlist->head = NULL;
 	dlist->tail = NULL;
-	return (dlist);
+	return dlist;
 }
 
 DListNode_t *get_new_node(char *str)
 {
-	DListNode_t *newnode;
+	DListNode_t *newnode = NULL;
 
-	newnode = malloc(sizeof(DListNode_t));
-	if (newnode == NULL)
-		return (my_ptr_error(INVALID_MALLOC));
+	newnode = malloc(sizeof *newnode);
+	if (!newnode)
+		return my_ptr_error(INVALID_MALLOC);
 	newnode->val = str;
 	newnode->next = NULL;
 	newnode->prev = NULL;
-	return (newnode);
+	return newnode;
 }
 
 int dlist_is_null(DListIndex_t *dlist)
 {
-	if (dlist == NULL)
-		return (true);
-	return (false);
+	if (!dlist)
+		return true;
+	return false;
 }
 
 int dlist_is_empty(DListIndex_t *dlist)
 {
-	if (dlist->length == 0 && dlist->head == NULL && dlist->tail == NULL)
-		return (true);
-	return (false);
+	if (dlist->length == 0 && !dlist->head && !dlist->tail)
+		return true;
+	return false;
 }

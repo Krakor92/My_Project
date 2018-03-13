@@ -23,7 +23,7 @@ int my_checkstr(char *str, char *allow)
 	int j = 0;
 
 	for (i = 0; str[i] != 0; i++) {
-		while (allow[j] != 0) {
+		while (allow[j] != '\0') {
 			if (str[i] != allow[j])
 				not_achar++;
 			j++;

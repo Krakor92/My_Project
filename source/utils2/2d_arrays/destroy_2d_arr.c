@@ -14,10 +14,10 @@
 ** @param	arr	The array of strings
 ** @return	N/A
 */
-void destroy_2d_char_arr(char **arr)
+void destroy_2d_char_arr(char **arr2d)
 {
-	free(arr[0]);
-	free(arr);
+	free(arr2d[0]);
+	free(arr2d);
 }
 
 /*
@@ -27,8 +27,8 @@ void destroy_2d_char_arr(char **arr)
 ** @param	arr	The array of int arrays
 ** @return	N/A
 */
-void destroy_2d_int_arr(int **arr)
+void destroy_2d_int_arr(int **arr2d)
 {
-	free(arr[0]);
-	free(arr);
+	free(arr2d[0]);
+	free(arr2d);
 }

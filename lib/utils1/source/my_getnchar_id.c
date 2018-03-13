@@ -22,7 +22,7 @@ int my_getnchar_id(char const *str, char c, int n)
 	int i = 0;
 	int j = 0;
 
-	if (str == NULL || n <= 0)
+	if (!str || n <= 0)
 		return -1;
 	while (str[i] != '\0') {
 		if (str[i] == c)

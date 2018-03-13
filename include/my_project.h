@@ -9,12 +9,12 @@
 	#define MY_PROJECT_H
 
 	/* Library */
-	#include <stdio.h>
-	#include "get_next_line.h"
-	#include "str_dlist.h"
-	#include "my_printf.h"
-	#include "my_struct.h"
 	#include "utils1.h"
+	#include "get_next_line.h"
+	#include "my_printf.h"
+	#include "my_project.h"
+	#include "my_struct.h"
+	#include "str_dlist.h"
 	#include "utils2.h"
 	#include "utilsCSFML.h"
 

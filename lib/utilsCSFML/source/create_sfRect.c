@@ -23,8 +23,8 @@ sfIntRect *init_sfIntRect(int left, int top, int width, int down)
 	sfIntRect *rect = NULL;
 
 	rect = malloc(sizeof(sfIntRect));
-	if (rect == NULL)
-		return (my_ptr_error(INVALID_MALLOC));
+	if (!rect)
+		return my_ptr_error(INVALID_MALLOC);
 	rect->left = left;
 	rect->top = top;
 	rect->width = width;

@@ -22,24 +22,24 @@ static char get_next_char(int fd)
 			return '\0';
 	}
 	new_char = buffer[cpt];
-	cpt += 1;
-	char_read -= 1;
+	cpt++;
+	char_read--;
 	return new_char;
 }
 
 static char *str_realloc(char* old_str, int size, int new_size)
 {
-	char *new_str = malloc(new_size * sizeof *new_str);
+	char *new_str;
 	int cpt = 0;
 
-	if (new_str == NULL)
+	new_str = malloc(new_size * sizeof *new_str);
+	if (!new_str)
 		return NULL;
 	while (cpt < size) {
 		new_str[cpt] = old_str[cpt];
 		cpt++;
 	}
 	free(old_str);
-	old_str = NULL;
 	return new_str;
 }
 
@@ -56,8 +56,8 @@ static char *read_loop(int fd, char *str)
 		len++;
 		if (len == read_size) {
 			str = str_realloc(str, len, len + 1);
-			read_size += 1;
-			if (str == NULL)
+			read_size++;
+			if (!str)
 				return my_ptr_error(INVALID_MALLOC);
 		}
 	}
@@ -67,13 +67,13 @@ static char *read_loop(int fd, char *str)
 
 char *get_next_line(int fd)
 {
-	char *str = NULL;
+	char *str;
 
 	if (READ_SIZE < 1)
-		return (my_ptr_error(INVALID_READ_SIZE));
-	str = malloc(READ_SIZE + 1);
-	if (str == NULL)
-		return (my_ptr_error(INVALID_MALLOC));
+		return my_ptr_error(INVALID_READ_SIZE);
+	str = malloc((READ_SIZE + 1) * sizeof *str);
+	if (!str)
+		return my_ptr_error(INVALID_MALLOC);
 	str = read_loop(fd, str);
-	return (str);
+	return str;
 }

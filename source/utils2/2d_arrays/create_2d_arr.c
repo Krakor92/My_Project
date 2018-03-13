@@ -16,24 +16,24 @@
 ** @return	The array with '\0' at the end of each string if
 ** 		the allocation worked well OR NULL
 */
-char **create_2d_char_arr(int nb_str, int str_size)
+char **create_2d_char_arr(unsigned int nb_str, unsigned int str_size)
 {
-	char **arr = NULL;
-	char *str = NULL;
-	int i = 0;
+	char **arr2d = NULL;
+	char *arr = NULL;
+	unsigned int i;
 
-	arr = (char**)malloc(sizeof(char*) * (nb_str + 1));
-	if (arr == NULL)
-		return (my_ptr_error(INVALID_MALLOC));
-	str = (char*)malloc(sizeof(char) * (nb_str + 1) * (str_size + 1));
-	if (str == NULL)
-		return (my_ptr_error(INVALID_MALLOC));
-	for (; i < nb_str; i++) {
-		arr[i] = &str[i * (str_size + 1)];
-		arr[i][str_size] = '\0';
+	arr2d = malloc((nb_str + 1) * sizeof *arr2d);
+	if (!arr2d)
+		return my_ptr_error(INVALID_MALLOC);
+	arr = malloc((nb_str + 1) * (str_size + 1) * sizeof **arr2d);
+	if (!arr)
+		return my_ptr_error(INVALID_MALLOC);
+	for (i = 0; i < nb_str; i++) {
+		arr2d[i] = &arr[i * (str_size + 1)];
+		arr2d[i][str_size] = '\0';
 	}
-	arr[i] = NULL;
-	return (arr);
+	arr2d[i] = NULL;
+	return arr2d;
 }
 
 /*
@@ -45,22 +45,22 @@ char **create_2d_char_arr(int nb_str, int str_size)
 ** @return	The array with -1 at the end of each int array if
 ** 		the allocation worked well OR NULL
 */
-int **create_2d_int_arr(int nb_args, int size_line)
+int **create_2d_int_arr(unsigned int nb_args, unsigned int size_line)
 {
-	int **arr = NULL;
-	int *str = NULL;
-	int i = 0;
+	int **arr2d = NULL;
+	int *arr = NULL;
+	unsigned int i;
 
-	arr = (int**)malloc(sizeof(int*) * (nb_args + 1));
-	if (arr == NULL)
-		return (my_ptr_error(INVALID_MALLOC));
-	str = (int*)malloc(sizeof(int) * (nb_args + 1) * (size_line + 1));
-	if (str == NULL)
-		return (my_ptr_error(INVALID_MALLOC));
-	for (; i < nb_args; i++) {
-		arr[i] = &str[i * (size_line + 1)];
-		arr[i][size_line] = -1;
+	arr2d = malloc((nb_args + 1) * sizeof *arr2d);
+	if (!arr2d)
+		return my_ptr_error(INVALID_MALLOC);
+	arr = malloc((nb_args + 1) * (size_line + 1) * sizeof **arr2d);
+	if (!arr)
+		return my_ptr_error(INVALID_MALLOC);
+	for (i = 0; i < nb_args; i++) {
+		arr2d[i] = &arr[i * (size_line + 1)];
+		arr2d[i][size_line] = -1;
 	}
-	arr[i] = NULL;
-	return (arr);
+	arr2d[i] = NULL;
+	return arr2d;
 }

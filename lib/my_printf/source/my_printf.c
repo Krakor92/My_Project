@@ -20,7 +20,7 @@ const converter_t converter_arr[] =
 	{x_flag, 'x'},
 	{majx_flag, 'X'},
 	{percent_flag, '%'},
-	{NULL, 0}
+	{NULL, '\0'}
 };
 
 static int exe_function(va_list ap, char flag)
@@ -28,16 +28,15 @@ static int exe_function(va_list ap, char flag)
 	int i = 0;
 	int len_ap = 0;
 
-	while (converter_arr[i].keyword != 0) {
+	while (converter_arr[i].keyword != '\0') {
 		if (converter_arr[i].keyword == flag) {
 			len_ap = converter_arr[i].ptrfunction(ap);
-			return (len_ap);
+			return len_ap;
 		}
-		i += 1;
+		i++;
 	}
-	return (len_ap);
+	return len_ap;
 }
-
 
 int my_printf(const char *fmt, ...)
 {
@@ -49,14 +48,14 @@ int my_printf(const char *fmt, ...)
 	while (fmt[i] != '\0') {
 		if (fmt[i] != '%') {
 			my_putchar(fmt[i]);
-			++len_tot;
-			++i;
+			len_tot++;
+			i++;
 		} else {
-			++i;
+			i++;
 			len_tot += exe_function(ap, fmt[i]);
-			++i;
+			i++;
 		}
 	}
 	va_end(ap);
-	return (len_tot);
+	return len_tot;
 }

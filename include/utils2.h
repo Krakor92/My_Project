@@ -22,11 +22,13 @@
 	/* Prototypes */
 	//2d_arrays//
 	//create_2d_arr.c
-	char **create_2d_char_arr(int, int);
-	int **create_2d_int_arr(int, int);
+	char **create_2d_char_arr(unsigned int, unsigned int);
+	int **create_2d_int_arr(unsigned int, unsigned int);
+	////////////////////////////////////
 	//destroy_2d_arr.c
 	void destroy_2d_char_arr(char**);
 	void destroy_2d_int_arr(int**);
+	/////////////////////////////////
 	//file//
 	//copy_file_in_str.c
 	char *copy_file_in_str(char*);

@@ -9,6 +9,8 @@
 
 void delete_head_dlist(DListIndex_t *dlist)
 {
+	DListNode_t *temp = NULL;
+
 	if (dlist_is_null(dlist) || dlist_is_empty(dlist))
 		return;
 	if (dlist->length == 1) {
@@ -19,17 +21,18 @@ void delete_head_dlist(DListIndex_t *dlist)
 		dlist->length = 0;
 		return;
 	}
-	DListNode_t *temp = dlist->head;
+	temp = dlist->head;
 	dlist->head = dlist->head->prev;
 	dlist->head->next = NULL;
 	free(temp->val);
 	free(temp);
-	temp = NULL;
 	dlist->length--;
 }
 
 void delete_tail_dlist(DListIndex_t *dlist)
 {
+	DListNode_t *temp = NULL;
+
 	if (dlist_is_null(dlist) || dlist_is_empty(dlist))
 		return;
 	if (dlist->length == 1) {
@@ -40,12 +43,11 @@ void delete_tail_dlist(DListIndex_t *dlist)
 		dlist->length = 0;
 		return;
 	}
-	DListNode_t *temp = dlist->tail;
+	temp = dlist->tail;
 	dlist->tail = dlist->tail->next;
 	dlist->tail->prev = NULL;
 	free(temp->val);
 	free(temp);
-	temp = NULL;
 	dlist->length--;
 }
 
@@ -55,7 +57,7 @@ void clean_dlist(DListIndex_t *dlist)
 		delete_head_dlist(dlist);
 }
 
-void destroy_dlist(DListCore_ptr dlist)
+void destroy_dlist(DListIndex_t *dlist)
 {
 	clean_dlist(dlist);
 	free(dlist);

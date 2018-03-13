@@ -11,10 +11,6 @@
 	/* Library */
 	#include "my_project.h"
 
-	/* Macros */
-
-	/* Constants */
-
 	/* Structs */
 	typedef struct int2d_s
 	{
@@ -41,6 +37,4 @@
 		float y;
 		float z;
 	} float3d_t;
-
-	/* Prototypes */
 #endif

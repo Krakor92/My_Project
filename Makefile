@@ -23,50 +23,29 @@
 ## - Faire de même dans le dossier $(UT_DIR)
 ##
 
-CC	=	gcc -lc_graph_prog
-
-CFLAGS	+=	-W -Wall -Wextra -pedantic -g3 -std=c99 -I include/
+CC	=	gcc
 
 RM	=	rm -f
 
-SRC_DIR	=	source/
+CFLAGS	+=	-W -Wall -Wextra -pedantic -g3 -std=c99 -I include/
+
+LDFLAGS	+=	-L$(LIB_DIR)my_printf/
+LDFLAGS	+=	-L$(LIB_DIR)utilsCSFML/
+LDFLAGS	+=	-L$(LIB_DIR)utils1/
+
+LDLIBS	+=	-lc_graph_prog -lutilsCSFML -lmy_printf -lutils1
+
 HDR_DIR	=	include/
+LIB_DIR	=	lib/
+SRC_DIR	=	source/
 UT_DIR	=	tests/
 
-SRC	=	$(SRC_DIR)oldProject/my_printf/base_converter_flags.c	\
-		$(SRC_DIR)oldProject/my_printf/base_converter.c	\
-		$(SRC_DIR)oldProject/my_printf/basic_flags.c	\
-		$(SRC_DIR)oldProject/my_printf/my_printf.c	\
-		$(SRC_DIR)oldProject/my_printf/specific_flags.c	\
-		$(SRC_DIR)oldProject/get_next_line.c	\
+SRC	=	$(SRC_DIR)oldProject/get_next_line.c	\
 		$(SRC_DIR)dlist/str_dlist/delete_dlist.c	\
 		$(SRC_DIR)dlist/str_dlist/double_str_list.c	\
 		$(SRC_DIR)dlist/str_dlist/insert_n_get_str_dlist.c	\
-		$(SRC_DIR)utils1/my_char_count.c	\
-		$(SRC_DIR)utils1/my_checkstr.c	\
-		$(SRC_DIR)utils1/my_getnbr.c	\
-		$(SRC_DIR)utils1/my_getnchar_id.c	\
-		$(SRC_DIR)utils1/my_int_error.c	\
-		$(SRC_DIR)utils1/my_nbrlen.c	\
-		$(SRC_DIR)utils1/my_nlinelen.c	\
-		$(SRC_DIR)utils1/my_ptr_error.c	\
-		$(SRC_DIR)utils1/my_putchar.c	\
-		$(SRC_DIR)utils1/my_putnbr.c	\
-		$(SRC_DIR)utils1/my_putstr_error.c	\
-		$(SRC_DIR)utils1/my_putstr.c	\
-		$(SRC_DIR)utils1/my_putunbr.c	\
-		$(SRC_DIR)utils1/my_strcpy.c	\
-		$(SRC_DIR)utils1/my_strdup.c	\
-		$(SRC_DIR)utils1/my_strequal.c	\
-		$(SRC_DIR)utils1/my_strlen.c	\
-		$(SRC_DIR)utils1/my_strncpy.c	\
-		$(SRC_DIR)utils1/my_unbrlen.c	\
 		$(SRC_DIR)utils2/2d_arrays/create_2d_arr.c	\
 		$(SRC_DIR)utils2/2d_arrays/destroy_2d_arr.c	\
-		$(SRC_DIR)utilsCSFML/create_2d_sfVector.c	\
-		$(SRC_DIR)utilsCSFML/create_my_window.c	\
-		$(SRC_DIR)utilsCSFML/create_sfRect.c	\
-		$(SRC_DIR)utilsCSFML/handle_events.c	\
 		$(SRC_DIR)main.c
 
 OBJ	=	$(SRC:.c=.o)
@@ -85,8 +64,13 @@ NAME	=	exe
 
 all:	$(NAME)
 
-$(NAME):	$(OBJ) $(HDR)
-	$(CC) -o $@ $(OBJ)
+$(NAME):	lib $(OBJ) $(HDR)
+	$(CC) -o $@ $(OBJ) $(LDFLAGS) $(LDLIBS)
+
+lib:
+	$(MAKE) -C $(LIB_DIR)utils1
+	$(MAKE) -C $(LIB_DIR)my_printf
+	$(MAKE) -C $(LIB_DIR)utilsCSFML
 
 tests_run:
 	$(MAKE) -C $(UT_DIR)
@@ -100,4 +84,4 @@ fclean:	clean
 
 re:	fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all lib clean fclean re
