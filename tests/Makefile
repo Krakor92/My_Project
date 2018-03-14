@@ -10,7 +10,7 @@
 
 CC	=	gcc
 
-CFLAGS	+=	-W -Wall -Wextra -pedantic -g3 -std=c99 -I ../include/
+CFLAGS	+=	-W -Wall -Wextra -pedantic -g3 -std=c99 -I ../include/ --coverage
 
 LDFLAGS	+=	-L$(LIB_DIR)my_printf
 LDFLAGS	+=	-L$(LIB_DIR)utilsCSFML
@@ -31,10 +31,11 @@ SRC	=	$(SRC_DIR)oldProject/get_next_line.c	\
 		$(SRC_DIR)utils2/2d_arrays/create_2d_arr.c	\
 		$(SRC_DIR)utils2/2d_arrays/destroy_2d_arr.c
 
-SRC_UT	=	$(SRC_UT_DIR)utils1_t1.c	\
-		$(SRC_UT_DIR)utils1_t2.c	\
-		$(SRC_UT_DIR)utils1_t3.c	\
-		$(SRC_UT_DIR)utils1_t4.c
+SRC_UT	=	$(SRC_UT_DIR)utils1/utils1_t1.c	\
+		$(SRC_UT_DIR)utils1/utils1_t2.c	\
+		$(SRC_UT_DIR)utils1/utils1_t3.c	\
+		$(SRC_UT_DIR)utils1/utils1_t4.c	\
+		$(SRC_UT_DIR)get_next_line/get_next_line_t1.c
 
 OBJ	=	$(SRC:.c=.o) $(SRC_UT:.c=.o)
 
@@ -53,7 +54,10 @@ NAME	=	test
 all:	tests
 
 tests:	$(NAME) $(OBJ)
-	- ./$(NAME) --verbose
+	./$(NAME) --verbose
+
+valgrind:	$(NAME) $(OBJ)
+	valgrind ./$(NAME)
 
 $(NAME):	lib $(OBJ)
 	$(CC) -o $(NAME) $(OBJ) $(CFLAGS) $(LDFLAGS) $(LDLIBS)
@@ -72,4 +76,4 @@ fclean: clean
 
 re:	fclean all
 
-.PHONY:	all tests lib clean fclean re
+.PHONY:	all tests valgrind lib clean fclean re
