@@ -10,17 +10,18 @@
 
 CC	=	gcc
 
-CFLAGS	+=	-W -Wall -Wextra -pedantic -g3 -std=c99 -I ../include/ --coverage
+CFLAGS	+=	-W -Wall -Wextra -pedantic -g3 -std=c99 -I ../include/
+CFLAGS	+=	--coverage
 
 LDFLAGS	+=	-L$(LIB_DIR)my_printf
 LDFLAGS	+=	-L$(LIB_DIR)utilsCSFML
 LDFLAGS	+=	-L$(LIB_DIR)utils1
 
 LDLIBS	+=	-lc_graph_prog -lmy_printf -lutilsCSFML -lutils1
-LDLIBS	+=	-lcriterion -lgcov --coverage
+LDLIBS	+=	-lcriterion -lgcov
 
 SRC_DIR	=	../source/
-SRC_UT_DIR	=	./source/
+SRC_UT_DIR	=	source/
 LIB_DIR	=	../lib/
 HDR_DIR	=	../include/
 
