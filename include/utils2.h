@@ -32,4 +32,7 @@
 	//file//
 	//copy_file_in_str.c
 	char *copy_file_in_str(char*);
+	//str_manip//
+	//str_realloc.c
+	char *str_realloc(char*, int, int);
 #endif

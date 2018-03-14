@@ -46,6 +46,8 @@ SRC	=	$(SRC_DIR)oldProject/get_next_line.c	\
 		$(SRC_DIR)dlist/str_dlist/insert_n_get_str_dlist.c	\
 		$(SRC_DIR)utils2/2d_arrays/create_2d_arr.c	\
 		$(SRC_DIR)utils2/2d_arrays/destroy_2d_arr.c	\
+		$(SRC_DIR)utils2/file/copy_file_in_str.c	\
+		$(SRC_DIR)utils2/str_manip/str_realloc.c	\
 		$(SRC_DIR)main.c
 
 OBJ	=	$(SRC:.c=.o)

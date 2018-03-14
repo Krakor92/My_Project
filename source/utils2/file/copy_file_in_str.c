@@ -12,14 +12,12 @@ char *copy_file_in_str(char *file)
 	struct stat info;
 	char *str;
 	int fd;
-	int retstat;
 	int len;
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return my_ptr_error(INVALID_OPEN);
-	retstat = stat(file, &info);
-	if (retstat == -1)
+	if (stat(file, &info) == -1)
 		return my_ptr_error(INVALID_STAT);
 	str = malloc((info.st_size + 1) * sizeof *str);
 	if (!str)
