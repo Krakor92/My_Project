@@ -6,7 +6,6 @@
 */
 
 #include "get_next_line.h"
-#include "utils1.h"
 
 static char get_next_char(int fd)
 {

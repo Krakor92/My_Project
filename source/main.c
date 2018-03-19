@@ -14,7 +14,6 @@
 ** @param	N/A
 ** @return	N/A
 */
-
 static void print_help(void)
 {
 	my_putstr("Project created in language C by Vincent FAIVRE\n\n");
@@ -26,8 +25,9 @@ static void print_help(void)
 
 static void print_all_nb_conversion(int nb)
 {
-	my_printf("%d\nIn binary = %b\nIn octal = %o\nIn hexadecimal = %X\n",
-	nb, nb, nb, nb);
+	my_printf("Your number is...\n%b in binary\n%o in octal\n\
+%X in hexadecimal\n", nb, nb, nb);
+	printf("\nWith printf()...\n%o in octal\n%X in hexadecimal\n", nb, nb);
 }
 
 /*

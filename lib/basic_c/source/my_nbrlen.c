@@ -5,7 +5,7 @@
 ** 2 functions
 */
 
-#include "utils1.h"
+#include "basic_c.h"
 
 /*
 ** my_nbrlen =

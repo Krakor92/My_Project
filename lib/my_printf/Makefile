@@ -21,7 +21,7 @@ SRC	=	$(SRC_DIR)base_converter_flags.c	\
 
 OBJ	=	$(SRC:.c=.o)
 
-HDR	=	$(HDR_DIR)utils1.h	\
+HDR	=	$(HDR_DIR)basic_c.h	\
 		$(HDR_DIR)my_printf.h
 
 LIBNAME =	my_printf

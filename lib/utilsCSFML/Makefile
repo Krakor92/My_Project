@@ -20,7 +20,7 @@ SRC	=	$(SRC_DIR)create_2d_sfVector.c	\
 
 OBJ	=	$(SRC:.c=.o)
 
-HDR	=	$(HDR_DIR)utils1.h	\
+HDR	=	$(HDR_DIR)basic_c.h	\
 		$(HDR_DIR)utilsCSFML.h
 
 LIBNAME =	utilsCSFML

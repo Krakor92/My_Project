@@ -29,11 +29,11 @@ RM	=	rm -f
 
 CFLAGS	+=	-W -Wall -Wextra -pedantic -g3 -std=c99 -I include/
 
-LDFLAGS	+=	-L$(LIB_DIR)my_printf/
-LDFLAGS	+=	-L$(LIB_DIR)utilsCSFML/
-LDFLAGS	+=	-L$(LIB_DIR)utils1/
+LDLIBS	+=	-lc_graph_prog
+LDLIBS	+=	-L$(LIB_DIR)my_printf/ -lmy_printf
+LDLIBS	+=	-L$(LIB_DIR)utilsCSFML/ -lutilsCSFML
+LDLIBS	+=	-L$(LIB_DIR)basic_c/ -lbasic_c
 
-LDLIBS	+=	-lc_graph_prog -lutilsCSFML -lmy_printf -lutils1
 
 HDR_DIR	=	include/
 LIB_DIR	=	lib/
@@ -52,11 +52,11 @@ SRC	=	$(SRC_DIR)oldProject/get_next_line.c	\
 
 OBJ	=	$(SRC:.c=.o)
 
-HDR	=	$(HDR_DIR)get_next_line.h	\
+HDR	=	$(HDR_DIR)basic_c.h	\
+		$(HDR_DIR)get_next_line.h	\
 		$(HDR_DIR)str_dlist.h	\
 		$(HDR_DIR)my_printf.h	\
 		$(HDR_DIR)my_project.h	\
-		$(HDR_DIR)utils1.h	\
 		$(HDR_DIR)utils2.h	\
 		$(HDR_DIR)utilsCSFML.h
 
@@ -67,10 +67,10 @@ NAME	=	exe
 all:	$(NAME)
 
 $(NAME):	lib $(OBJ) $(HDR)
-	$(CC) -o $@ $(OBJ) $(LDFLAGS) $(LDLIBS)
+	$(CC) -o $@ $(OBJ) $(LDLIBS)
 
 lib:
-	$(MAKE) -C $(LIB_DIR)utils1
+	$(MAKE) -C $(LIB_DIR)basic_c
 	$(MAKE) -C $(LIB_DIR)my_printf
 	$(MAKE) -C $(LIB_DIR)utilsCSFML
 

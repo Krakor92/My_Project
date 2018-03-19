@@ -9,7 +9,7 @@
 	#define DOUBLE_STR_LIST_H
 
 	/* Library */
-	#include "utils1.h"
+	#include "basic_c.h"
 
 	/* Structs */
 	typedef struct DoubleListNode_s

@@ -36,9 +36,9 @@ SRC	=	$(SRC_DIR)my_char_count.c	\
 
 OBJ	=	$(SRC:.c=.o)
 
-HDR	=	$(HDR_DIR)utils1.h
+HDR	=	$(HDR_DIR)basic_c.h
 
-LIBNAME =	utils1
+LIBNAME =	basic_c
 
 LIB	=	lib$(LIBNAME).a
 

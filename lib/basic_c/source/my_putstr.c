@@ -5,7 +5,7 @@
 ** 1 function
 */
 
-#include "utils1.h"
+#include "basic_c.h"
 
 /*
 ** my_putstr =

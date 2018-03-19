@@ -12,6 +12,7 @@
 	/* Library */
 	#include <stdlib.h>
 	#include <unistd.h>
+	#include "basic_c.h"
 
 	/* Constants */
 	static const char INVALID_READ_SIZE[] = "Invalid READ_SIZE !\n";
