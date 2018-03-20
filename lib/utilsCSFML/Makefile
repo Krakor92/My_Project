@@ -5,35 +5,42 @@
 ## utilsCSFML lib's Makefile
 ##
 
+CC	=	gcc
+
 RM	=	rm -f
 
-CFLAGS	+=	-W -Wall -Wextra -pedantic -g3 -std=c99 -I include/
+CFLAGS	+=	-W -Wall -Wextra -ansi -pedantic -g3 -std=c99 -I include/
+LFLAGS	+=
 
-HDR_DIR	=	include/
-SRC_DIR	=	source/
-LIB_DIR	=	../
+SRCDIR	=	source/
+HDRDIR	=	include/
+LIBDIR	=	../
 
-SRC	=	$(SRC_DIR)create_2d_sfVector.c	\
-		$(SRC_DIR)create_my_window.c	\
-		$(SRC_DIR)create_sfRect.c	\
-		$(SRC_DIR)handle_events.c
+SRC	=	$(SRCDIR)create_2d_sfVector.c	\
+		$(SRCDIR)create_my_window.c	\
+		$(SRCDIR)create_sfRect.c	\
+		$(SRCDIR)handle_events.c
 
-OBJ	=	$(SRC:.c=.o)
+OBJ	=	$(SRC:%.c=%.o)
 
-HDR	=	$(HDR_DIR)basic_c.h	\
-		$(HDR_DIR)utilsCSFML.h
-
-LIBNAME =	utilsCSFML
+HDR	=	$(HDRDIR)basic_c.h	\
+		$(HDRDIR)utilsCSFML.h
 
 LIB	=	lib$(LIBNAME).a
+
+LIBNAME =	utilsCSFML
 
 
 
 all:	$(LIB)
 
 $(LIB):	$(OBJ) $(HDR)
-	ar -rc $@ $^
+	ar -rc $@ $(OBJ)
 	ranlib $@
+
+%.o: %.c $(HDR)
+	$(CC) $(CFLAGS) -o $@ -c $<
+
 
 clean:
 	$(RM) $(OBJ)

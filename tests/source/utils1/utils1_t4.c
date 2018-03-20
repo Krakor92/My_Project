@@ -6,7 +6,7 @@
 */
 
 #include <criterion/criterion.h>
-#include "utils1.h"
+#include "basic_c.h"
 
 /***************
 * my_strncpy.c *

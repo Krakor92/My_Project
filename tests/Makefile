@@ -9,72 +9,79 @@
 ##
 
 CC	=	gcc
+RM	=	rm -f
 
-CFLAGS	+=	-W -Wall -Wextra -pedantic -g3 -std=c99 -I ../include/
+# compiling flags here
+CFLAGS	=	-W -Wall -Wextra -ansi -pedantic -g3 -std=c99 -I$(HDRDIR)
 CFLAGS	+=	--coverage
+# linking flags here
+LFLAGS	=	-lgcov
 
-LDFLAGS	+=	-L$(LIB_DIR)my_printf
-LDFLAGS	+=	-L$(LIB_DIR)utilsCSFML
-LDFLAGS	+=	-L$(LIB_DIR)utils1
+# library flags here
+LDFLAGS	=	-L$(LIBDIR)my_printf/ -L$(LIBDIR)utilsCSFML/ -L$(LIBDIR)basic_c/
+LDLIBS	=	-lc_graph_prog -lcriterion -lmy_printf -lutilsCSFML -lbasic_c
 
-LDLIBS	+=	-lc_graph_prog -lmy_printf -lutilsCSFML -lutils1
-LDLIBS	+=	-lcriterion -lgcov
+# directories location here
+SRCDIR	=	../source/
+UTSRCDIR=	source/
+HDRDIR	=	../include/
+LIBDIR	=	../lib/
 
-SRC_DIR	=	../source/
-SRC_UT_DIR	=	source/
-LIB_DIR	=	../lib/
-HDR_DIR	=	../include/
+SRC	=	$(SRCDIR)oldProject/get_next_line.c	\
+		$(SRCDIR)dlist/str_dlist/delete_dlist.c	\
+		$(SRCDIR)dlist/str_dlist/double_str_list.c	\
+		$(SRCDIR)dlist/str_dlist/insert_n_get_str_dlist.c	\
+		$(SRCDIR)utils2/2d_arrays/create_2d_arr.c	\
+		$(SRCDIR)utils2/2d_arrays/destroy_2d_arr.c	\
+		$(SRCDIR)utils2/file/copy_file_in_str.c	\
+		$(SRCDIR)utils2/str_manip/str_realloc.c
 
-SRC	=	$(SRC_DIR)oldProject/get_next_line.c	\
-		$(SRC_DIR)dlist/str_dlist/delete_dlist.c	\
-		$(SRC_DIR)dlist/str_dlist/double_str_list.c	\
-		$(SRC_DIR)dlist/str_dlist/insert_n_get_str_dlist.c	\
-		$(SRC_DIR)utils2/2d_arrays/create_2d_arr.c	\
-		$(SRC_DIR)utils2/2d_arrays/destroy_2d_arr.c
+UTSRC	=	$(UTSRCDIR)utils1/utils1_t1.c	\
+		$(UTSRCDIR)utils1/utils1_t2.c	\
+		$(UTSRCDIR)utils1/utils1_t3.c	\
+		$(UTSRCDIR)utils1/utils1_t4.c	\
+		$(UTSRCDIR)get_next_line/get_next_line_t1.c
 
-SRC_UT	=	$(SRC_UT_DIR)utils1/utils1_t1.c	\
-		$(SRC_UT_DIR)utils1/utils1_t2.c	\
-		$(SRC_UT_DIR)utils1/utils1_t3.c	\
-		$(SRC_UT_DIR)utils1/utils1_t4.c	\
-		$(SRC_UT_DIR)get_next_line/get_next_line_t1.c
+OBJ	=	$(SRC:%c=%o) $(UTSRC:%c=%o)
 
-OBJ	=	$(SRC:.c=.o) $(SRC_UT:.c=.o)
+HDR	=	$(HDRDIR)basic_c.h	\
+		$(HDRDIR)get_next_line.h	\
+		$(HDRDIR)str_dlist.h	\
+		$(HDRDIR)my_printf.h	\
+		$(HDRDIR)my_project.h	\
+		$(HDRDIR)utils2.h	\
+		$(HDRDIR)utilsCSFML.h
 
-HDR	=	$(HDR_DIR)get_next_line.h	\
-		$(HDR_DIR)str_dlist.h	\
-		$(HDR_DIR)my_printf.h	\
-		$(HDR_DIR)my_project.h	\
-		$(HDR_DIR)utils1.h	\
-		$(HDR_DIR)utils2.h	\
-		$(HDR_DIR)utilsCSFML.h
-
-NAME	=	test
+# project name (generate executable with this name)
+NAME	=	utest
 
 
 
 all:	tests
 
 tests:	$(NAME) $(OBJ)
-	./$(NAME) --verbose
+	./$(NAME)
 
 valgrind:	$(NAME) $(OBJ)
 	valgrind ./$(NAME)
 
-$(NAME):	lib $(OBJ)
-	$(CC) -o $(NAME) $(OBJ) $(CFLAGS) $(LDFLAGS) $(LDLIBS)
+$(NAME): lib $(OBJ)
+	$(CC) -o $@ $(OBJ) $(LFLAGS) $(LDFLAGS) $(LDLIBS)
+
+%.o: %.c $(HDR)
+	$(CC) -o $@ -c $< $(CFLAGS)
 
 lib:
-	$(MAKE) -C $(LIB_DIR)utils1
-	$(MAKE) -C $(LIB_DIR)my_printf
-	$(MAKE) -C $(LIB_DIR)utilsCSFML
+	$(MAKE) -C $(LIBDIR)basic_c
+	$(MAKE) -C $(LIBDIR)my_printf
+	$(MAKE) -C $(LIBDIR)utilsCSFML
 
 clean:
-	rm -f $(OBJ)
-	.././mr_clean
+	$(RM) $(OBJ)
 
-fclean: clean
-	rm -f $(NAME)
+fclean:	clean
+	$(RM) $(NAME)
 
 re:	fclean all
 
-.PHONY:	all tests valgrind lib clean fclean re
+.PHONY: all tests valgrind lib clean fclean re

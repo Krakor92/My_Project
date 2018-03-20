@@ -10,7 +10,10 @@
 ## (ces dernières doivent contenir les chemins vers leurs fichiers)
 ## $+ -> Comme au dessus mais les doublons sont supprimés
 ## $@ -> La cible courante (cible de la règle où on se trouve)
-## $< -> Représente la première dépendance
+## $< -> Représente la première dépendance(bug avec $(OBJ))
+##
+## Tips:
+## Rajouter @ devant une commande la rends "muette"
 ##
 ## lib: c_graph_prog (CSFML), m (math), ncurses (<-)...
 ##
@@ -27,63 +30,88 @@ CC	=	gcc
 
 RM	=	rm -f
 
-CFLAGS	+=	-W -Wall -Wextra -pedantic -g3 -std=c99 -I include/
+# compiling flags here
+CFLAGS	=	-W -Wall -Wextra -ansi -pedantic -g3 -std=c99 -I$(HDRDIR)
+# linking flags here
+LFLAGS	=	-lgcov
 
-LDLIBS	+=	-lc_graph_prog
-LDLIBS	+=	-L$(LIB_DIR)my_printf/ -lmy_printf
-LDLIBS	+=	-L$(LIB_DIR)utilsCSFML/ -lutilsCSFML
-LDLIBS	+=	-L$(LIB_DIR)basic_c/ -lbasic_c
+# library flags here
+LDFLAGS	= -L$(LIBDIR)my_printf/ -L$(LIBDIR)utilsCSFML/ -L$(LIBDIR)basic_c/
+LDLIBS	= -lc_graph_prog -lmy_printf -lutilsCSFML -lbasic_c
 
+# directories location here
+SRCDIR	=	source/
+HDRDIR	=	include/
+LIBDIR	=	lib/
+UTDIR	=	tests/
 
-HDR_DIR	=	include/
-LIB_DIR	=	lib/
-SRC_DIR	=	source/
-UT_DIR	=	tests/
+SRC	=	$(SRCDIR)oldProject/get_next_line.c	\
+		$(SRCDIR)dlist/str_dlist/delete_dlist.c	\
+		$(SRCDIR)dlist/str_dlist/double_str_list.c	\
+		$(SRCDIR)dlist/str_dlist/insert_n_get_str_dlist.c	\
+		$(SRCDIR)utils2/2d_arrays/create_2d_arr.c	\
+		$(SRCDIR)utils2/2d_arrays/destroy_2d_arr.c	\
+		$(SRCDIR)utils2/file/copy_file_in_str.c	\
+		$(SRCDIR)utils2/str_manip/str_realloc.c	\
+		$(SRCDIR)main.c
 
-SRC	=	$(SRC_DIR)oldProject/get_next_line.c	\
-		$(SRC_DIR)dlist/str_dlist/delete_dlist.c	\
-		$(SRC_DIR)dlist/str_dlist/double_str_list.c	\
-		$(SRC_DIR)dlist/str_dlist/insert_n_get_str_dlist.c	\
-		$(SRC_DIR)utils2/2d_arrays/create_2d_arr.c	\
-		$(SRC_DIR)utils2/2d_arrays/destroy_2d_arr.c	\
-		$(SRC_DIR)utils2/file/copy_file_in_str.c	\
-		$(SRC_DIR)utils2/str_manip/str_realloc.c	\
-		$(SRC_DIR)main.c
+OBJ	=	$(SRC:%.c=%.o)
 
-OBJ	=	$(SRC:.c=.o)
+HDR	=	$(HDRDIR)basic_c.h	\
+		$(HDRDIR)get_next_line.h	\
+		$(HDRDIR)str_dlist.h	\
+		$(HDRDIR)my_printf.h	\
+		$(HDRDIR)my_project.h	\
+		$(HDRDIR)utils2.h	\
+		$(HDRDIR)utilsCSFML.h
 
-HDR	=	$(HDR_DIR)basic_c.h	\
-		$(HDR_DIR)get_next_line.h	\
-		$(HDR_DIR)str_dlist.h	\
-		$(HDR_DIR)my_printf.h	\
-		$(HDR_DIR)my_project.h	\
-		$(HDR_DIR)utils2.h	\
-		$(HDR_DIR)utilsCSFML.h
-
+# project name (generate executable with this name)
 NAME	=	exe
 
 
 
 all:	$(NAME)
 
-$(NAME):	lib $(OBJ) $(HDR)
-	$(CC) -o $@ $(OBJ) $(LDLIBS)
+$(NAME): lib $(OBJ) $(HDR)
+	@echo "============================"
+	@echo -e "||\e[34m SUCCESSFUL COMPILATION \e[0m||"
+	@echo "============================"
+	$(CC) -o $@ $(OBJ) $(LFLAGS) $(LDFLAGS) $(LDLIBS)
+	@echo "======================"
+	@echo -e "||\e[32m LINKING COMPLETE \e[0m||"
+	@echo "======================"
+	@echo -e "\e[95m\n=> \e[1m"$@"\e[21m has been created!\n\e[0m"
+
+%.o: %.c $(HDR)
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 lib:
-	$(MAKE) -C $(LIB_DIR)basic_c
-	$(MAKE) -C $(LIB_DIR)my_printf
-	$(MAKE) -C $(LIB_DIR)utilsCSFML
+	$(MAKE) -C $(LIBDIR)basic_c
+	$(MAKE) -C $(LIBDIR)my_printf
+	$(MAKE) -C $(LIBDIR)utilsCSFML
 
 tests_run:
-	$(MAKE) -C $(UT_DIR)
+	@echo "======================="
+	@echo -e "||\e[33m LAUNCH UNIT_TESTS \e[0m||"
+	@echo "======================="
+	$(MAKE) -C $(UTDIR)
 
 clean:
 	$(RM) $(OBJ)
-	./mr_clean
 
-fclean:	clean
+fclean:	delete clean
 	$(RM) $(NAME)
+	$(MAKE) -C $(LIBDIR)basic_c fclean
+	$(MAKE) -C $(LIBDIR)my_printf fclean
+	$(MAKE) -C $(LIBDIR)utilsCSFML fclean
+	$(MAKE) -C $(UTDIR) fclean
+	./mr_clean
 
 re:	fclean all
 
-.PHONY: all lib clean fclean re
+delete:
+	@echo "====================================="
+	@echo -e "||\e[31m DELETE BINARY + LIB + OBJ FILES \e[0m||"
+	@echo "====================================="
+
+.PHONY: all lib tests_run clean fclean re delete

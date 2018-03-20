@@ -5,36 +5,42 @@
 ## My_printf lib's Makefile
 ##
 
+CC	=	gcc
+
 RM	=	rm -f
 
-CFLAGS	+=	-W -Wall -Wextra -pedantic -g3 -std=c99 -I include/
+CFLAGS	+=	-W -Wall -Wextra -ansi -pedantic -g3 -std=c99 -I$(HDRDIR)
+LFLAGS	=
 
-HDR_DIR	=	include/
-SRC_DIR	=	source/
-LIB_DIR	=	../
+SRCDIR	=	source/
+HDRDIR	=	include/
+LIBDIR	=	../
 
-SRC	=	$(SRC_DIR)base_converter_flags.c	\
-		$(SRC_DIR)base_converter.c	\
-		$(SRC_DIR)basic_flags.c	\
-		$(SRC_DIR)my_printf.c	\
-		$(SRC_DIR)specific_flags.c
+SRC	=	$(SRCDIR)base_converter_flags.c	\
+		$(SRCDIR)base_converter.c	\
+		$(SRCDIR)basic_flags.c	\
+		$(SRCDIR)my_printf.c	\
+		$(SRCDIR)specific_flags.c
 
-OBJ	=	$(SRC:.c=.o)
+OBJ	=	$(SRC:%.c=%.o)
 
-HDR	=	$(HDR_DIR)basic_c.h	\
-		$(HDR_DIR)my_printf.h
-
-LIBNAME =	my_printf
+HDR	=	$(HDRDIR)basic_c.h	\
+		$(HDRDIR)my_printf.h
 
 LIB	=	lib$(LIBNAME).a
+
+LIBNAME =	my_printf
 
 
 
 all:	$(LIB)
 
 $(LIB):	$(OBJ) $(HDR)
-	ar -rc $@ $^
+	ar -rc $@ $(OBJ)
 	ranlib $@
+
+%.o: %.c $(HDR)
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
 	$(RM) $(OBJ)

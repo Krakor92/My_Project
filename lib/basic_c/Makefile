@@ -2,53 +2,59 @@
 ## EPITECH PROJECT, 2017
 ## [N/A]
 ## File description:
-## Utils1 lib's Makefile
+## Basic_c lib's Makefile
 ##
+
+CC	=	gcc
 
 RM	=	rm -f
 
-CFLAGS	+=	-I include/
+CFLAGS	+=	-W -Wall -Wextra -ansi -pedantic -g3 -std=c99 -I$(HDRDIR)
+LFLAGS	=
 
-SRC_DIR	=	source/
-HDR_DIR	=	include/
+SRCDIR	=	source/
+HDRDIR	=	include/
 
-SRC	=	$(SRC_DIR)my_char_count.c	\
-		$(SRC_DIR)my_checkchar.c	\
-		$(SRC_DIR)my_checkstr.c	\
-		$(SRC_DIR)my_getnbr.c	\
-		$(SRC_DIR)my_getnchar_id.c	\
-		$(SRC_DIR)my_int_error.c	\
-		$(SRC_DIR)my_nbrlen.c	\
-		$(SRC_DIR)my_nlinelen.c	\
-		$(SRC_DIR)my_ptr_error.c	\
-		$(SRC_DIR)my_putchar.c	\
-		$(SRC_DIR)my_putnbr.c	\
-		$(SRC_DIR)my_putstr_error.c	\
-		$(SRC_DIR)my_putstr.c	\
-		$(SRC_DIR)my_putunbr.c	\
-		$(SRC_DIR)my_strcpy.c	\
-		$(SRC_DIR)my_strdup.c	\
-		$(SRC_DIR)my_strequal.c	\
-		$(SRC_DIR)my_strlen.c	\
-		$(SRC_DIR)my_strmodif.c	\
-		$(SRC_DIR)my_strncpy.c	\
-		$(SRC_DIR)my_unbrlen.c
+SRC	=	$(SRCDIR)my_char_count.c	\
+		$(SRCDIR)my_checkchar.c	\
+		$(SRCDIR)my_checkstr.c	\
+		$(SRCDIR)my_getnbr.c	\
+		$(SRCDIR)my_getnchar_id.c	\
+		$(SRCDIR)my_int_error.c	\
+		$(SRCDIR)my_nbrlen.c	\
+		$(SRCDIR)my_nlinelen.c	\
+		$(SRCDIR)my_ptr_error.c	\
+		$(SRCDIR)my_putchar.c	\
+		$(SRCDIR)my_putnbr.c	\
+		$(SRCDIR)my_putstr_error.c	\
+		$(SRCDIR)my_putstr.c	\
+		$(SRCDIR)my_putunbr.c	\
+		$(SRCDIR)my_strcpy.c	\
+		$(SRCDIR)my_strdup.c	\
+		$(SRCDIR)my_strequal.c	\
+		$(SRCDIR)my_strlen.c	\
+		$(SRCDIR)my_strmodif.c	\
+		$(SRCDIR)my_strncpy.c	\
+		$(SRCDIR)my_unbrlen.c
 
-OBJ	=	$(SRC:.c=.o)
+OBJ	=	$(SRC:%.c=%.o)
 
-HDR	=	$(HDR_DIR)basic_c.h
-
-LIBNAME =	basic_c
+HDR	=	$(HDRDIR)basic_c.h
 
 LIB	=	lib$(LIBNAME).a
+
+LIBNAME =	basic_c
 
 
 
 all:	$(LIB)
 
 $(LIB):	$(OBJ) $(HDR)
-	ar -rc $@ $^
+	ar -rc $@ $(OBJ)
 	ranlib $@
+
+%.o: %.c $(HDR)
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
 	$(RM) $(OBJ)
