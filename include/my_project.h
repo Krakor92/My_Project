@@ -11,6 +11,7 @@
 	/* Library */
 	#include "basic_c.h"
 	#include "get_next_line.h"
+	#include "my_enums.h"
 	#include "my_printf.h"
 	#include "my_structs.h"
 	#include "str_dlist.h"

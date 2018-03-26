@@ -50,6 +50,7 @@ OBJ	=	$(SRC:%.c=%.o)
 
 HDR	=	$(HDRDIR)basic_c.h	\
 		$(HDRDIR)get_next_line.h	\
+		$(HDRDIR)my_enums.h	\
 		$(HDRDIR)str_dlist.h	\
 		$(HDRDIR)my_printf.h	\
 		$(HDRDIR)my_project.h	\
