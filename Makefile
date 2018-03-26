@@ -14,16 +14,7 @@
 ##
 ## Tips:
 ## Rajouter @ devant une commande la rends "muette"
-##
 ## lib: c_graph_prog (CSFML), m (math), ncurses (<-)...
-##
-## SI VOUS COPIEZ CE DOSSIER POUR UN PROJET, VOUS DEVEZ:
-## - Retirer ou Ajouter des fichiers à compiler (.c ou .h)
-## - Changer le $(NAME) du binaire
-## - Changer le nom du header my_project.h avec votre nom de projet
-## - Ajouter ou retirer des librairies
-## - Changer le contenu de my_project.h en fonction des fonctions retirées
-## - Faire de même dans le dossier $(UT_DIR)
 ##
 
 CC	=	gcc
@@ -62,6 +53,7 @@ HDR	=	$(HDRDIR)basic_c.h	\
 		$(HDRDIR)str_dlist.h	\
 		$(HDRDIR)my_printf.h	\
 		$(HDRDIR)my_project.h	\
+		$(HDRDIR)my_structs.h	\
 		$(HDRDIR)utils2.h	\
 		$(HDRDIR)utilsCSFML.h
 
@@ -72,7 +64,10 @@ NAME	=	exe
 
 all:	$(NAME)
 
-$(NAME): lib $(OBJ) $(HDR)
+$(NAME): $(OBJ) $(HDR)
+	$(MAKE) -C $(LIBDIR)basic_c
+	$(MAKE) -C $(LIBDIR)my_printf
+	$(MAKE) -C $(LIBDIR)utilsCSFML
 	@echo "============================"
 	@echo -e "||\e[34m SUCCESSFUL COMPILATION \e[0m||"
 	@echo "============================"
@@ -84,11 +79,6 @@ $(NAME): lib $(OBJ) $(HDR)
 
 %.o: %.c $(HDR)
 	$(CC) $(CFLAGS) -o $@ -c $<
-
-lib:
-	$(MAKE) -C $(LIBDIR)basic_c
-	$(MAKE) -C $(LIBDIR)my_printf
-	$(MAKE) -C $(LIBDIR)utilsCSFML
 
 tests_run:
 	@echo "======================="
@@ -114,4 +104,4 @@ delete:
 	@echo -e "||\e[31m DELETE BINARY + LIB + OBJ FILES \e[0m||"
 	@echo "====================================="
 
-.PHONY: all lib tests_run clean fclean re delete
+.PHONY: all tests_run clean fclean re delete

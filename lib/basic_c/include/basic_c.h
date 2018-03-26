@@ -2,11 +2,11 @@
 ** EPITECH PROJECT, 2017
 ** [N/A] {Vincent FAIVRE}
 ** File description:
-** Utils functions header
+** basic_c.h
 */
 
-#ifndef UTILS1_H
-	#define UTILS1_H
+#ifndef __BASIC_C__H__
+	#define __BASIC_C__H__
 
 	/* Library */
 	#include <stdbool.h>
@@ -15,7 +15,7 @@
 	#include <unistd.h>
 
 	/* Macros */
-	#define IS_NUMBER(c) c >= '0' && c <= '9'
+	#define IS_NUMBER(c) '0' <= c && c <= '9'
 	#define IS_NB_IN_RANGE_S(nb, min, max) nb > min && nb < max
 	#define IS_NB_IN_RANGE(nb, min, max) nb >= min && nb <= max
 

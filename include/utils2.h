@@ -5,8 +5,8 @@
 ** Utils functions header
 */
 
-#ifndef UTILS2_H
-	#define UTILS2_H
+#ifndef __UTILS2__H__
+	#define __UTILS2__H__
 
 	/* Library */
 	#include <fcntl.h>

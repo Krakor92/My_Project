@@ -5,8 +5,8 @@
 ** Get_next_line's header
 */
 
-#ifndef GET_NEXT_LINE_H
-	#define GET_NEXT_LINE_H
+#ifndef __GET_NEXT_LINE__H__
+	#define __GET_NEXT_LINE__H__
 	#define READ_SIZE 1
 
 	/* Library */

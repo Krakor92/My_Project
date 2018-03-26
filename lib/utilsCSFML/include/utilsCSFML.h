@@ -5,8 +5,8 @@
 ** Utils functions header
 */
 
-#ifndef UTILSCSFML_H
-	#define UTILSCSFML_H
+#ifndef __UTILSCSFML__H__
+	#define __UTILSCSFML__H__
 
 	/* Library */
 	#include <SFML/Graphics.h>

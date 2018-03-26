@@ -5,8 +5,8 @@
 ** Double Str Linked List Header
 */
 
-#ifndef DOUBLE_STR_LIST_H
-	#define DOUBLE_STR_LIST_H
+#ifndef __DOUBLE_STR_LIST__H__
+	#define __DOUBLE_STR_LIST__H__
 
 	/* Library */
 	#include "basic_c.h"

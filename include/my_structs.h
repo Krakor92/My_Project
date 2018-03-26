@@ -2,39 +2,40 @@
 ** EPITECH PROJECT, 2017
 ** [N/A] {Vincent FAIVRE}
 ** File description:
-** Utils functions header
+** my_structs.h
 */
 
-#ifndef MY_STRUCTS_H
-	#define MY_STRUCTS_H
+#ifndef __MY_STRUCTS__H__
+	#define __MY_STRUCTS__H__
 
 	/* Library */
 	#include "my_project.h"
+	#include "my_typedefs.h"
 
 	/* Structs */
-	typedef struct int2d_s
+	struct int2d_s
 	{
 		int x;
 		int y;
-	} int2d_t;
+	};
 
-	typedef struct int3d_s
+	struct int3d_s
 	{
 		int x;
 		int y;
 		int z;
-	} int3d_t;
+	};
 
-	typedef struct float2d_s
+	struct float2d_s
 	{
 		float x;
 		float y;
-	} float2d_t;
+	};
 
-	typedef struct float3d_s
+	struct float3d_s
 	{
 		float x;
 		float y;
 		float z;
-	} float3d_t;
+	};
 #endif

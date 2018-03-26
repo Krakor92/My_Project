@@ -5,8 +5,8 @@
 ** My_printf's Header
 */
 
-#ifndef	MY_PRINTF_H
-	#define MY_PRINTF_H
+#ifndef	__MY_PRINTF__H__
+	#define __MY_PRINTF__H__
 
 	/* Library */
 	#include <stdarg.h>
