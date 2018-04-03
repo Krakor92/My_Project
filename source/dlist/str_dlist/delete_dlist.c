@@ -7,9 +7,9 @@
 
 #include "str_dlist.h"
 
-void delete_head_dlist(DListIndex_t *dlist)
+void delete_head_dlist(dlist_index_t *dlist)
 {
-	DListNode_t *temp = NULL;
+	dlist_node_t *temp = NULL;
 
 	if (dlist_is_null(dlist) || dlist_is_empty(dlist))
 		return;
@@ -29,9 +29,9 @@ void delete_head_dlist(DListIndex_t *dlist)
 	dlist->length--;
 }
 
-void delete_tail_dlist(DListIndex_t *dlist)
+void delete_tail_dlist(dlist_index_t *dlist)
 {
-	DListNode_t *temp = NULL;
+	dlist_node_t *temp = NULL;
 
 	if (dlist_is_null(dlist) || dlist_is_empty(dlist))
 		return;
@@ -51,13 +51,13 @@ void delete_tail_dlist(DListIndex_t *dlist)
 	dlist->length--;
 }
 
-void clean_dlist(DListIndex_t *dlist)
+void clean_dlist(dlist_index_t *dlist)
 {
 	while (!dlist_is_empty(dlist))
 		delete_head_dlist(dlist);
 }
 
-void destroy_dlist(DListIndex_t *dlist)
+void destroy_dlist(dlist_index_t *dlist)
 {
 	clean_dlist(dlist);
 	free(dlist);

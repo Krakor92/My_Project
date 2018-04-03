@@ -9,7 +9,6 @@
 	#define __MY_STRUCTS__H__
 
 	/* Library */
-	#include "my_project.h"
 	#include "my_typedefs.h"
 
 	/* Structs */

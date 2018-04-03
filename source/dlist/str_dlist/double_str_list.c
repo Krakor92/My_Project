@@ -7,9 +7,9 @@
 
 #include "str_dlist.h"
 
-DListIndex_t *get_new_dlist(void)
+dlist_index_t *get_new_dlist(void)
 {
-	DListIndex_t *dlist = NULL;
+	dlist_index_t *dlist = NULL;
 
 	dlist = malloc(sizeof *dlist);
 	if (!dlist)
@@ -20,9 +20,9 @@ DListIndex_t *get_new_dlist(void)
 	return dlist;
 }
 
-DListNode_t *get_new_node(char *str)
+dlist_node_t *get_new_node(char *str)
 {
-	DListNode_t *newnode = NULL;
+	dlist_node_t *newnode = NULL;
 
 	newnode = malloc(sizeof *newnode);
 	if (!newnode)
@@ -33,14 +33,14 @@ DListNode_t *get_new_node(char *str)
 	return newnode;
 }
 
-int dlist_is_null(DListIndex_t *dlist)
+int dlist_is_null(dlist_index_t *dlist)
 {
 	if (!dlist)
 		return true;
 	return false;
 }
 
-int dlist_is_empty(DListIndex_t *dlist)
+int dlist_is_empty(dlist_index_t *dlist)
 {
 	if (dlist->length == 0 && !dlist->head && !dlist->tail)
 		return true;

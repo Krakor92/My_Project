@@ -10,21 +10,24 @@
 
 	/* Library */
 	#include "basic_c.h"
+	#include "my_enums.h"
+	#include "my_structs.h"
+	#include "my_typedefs.h"
 
 	/* Structs */
-	typedef struct DoubleListNode_s
+	struct dlist_node_s
 	{
 		char *val;
-		struct DoubleListNode_s *prev;
-		struct DoubleListNode_s *next;
-	}*DListNode_ptr, DListNode_t;
+		struct dlist_node_s *prev;
+		struct dlist_node_s *next;
+	};
 
-	typedef struct DoubleListIndex_s
+	struct dlist_index_s
 	{
 		int length;
-		DListNode_t *head;
-		DListNode_t *tail;
-	}*DListIndex_ptr, DListIndex_t;
+		dlist_node_t *head;
+		dlist_node_t *tail;
+	};
 
 	/* Representation:
 	*
@@ -37,22 +40,22 @@
 
 	/* Prototypes */
 	//delete_dlists.c
-	void delete_head_dlist(DListIndex_t *dlist);
-	void delete_tail_dlist(DListIndex_t *dlist);
-	void clean_dlist(DListIndex_t *dlist);
-	void destroy_dlist(DListIndex_t *dlist);
+	void delete_head_dlist(dlist_index_t *dlist);
+	void delete_tail_dlist(dlist_index_t *dlist);
+	void clean_dlist(dlist_index_t *dlist);
+	void destroy_dlist(dlist_index_t *dlist);
 	////////////////////////////////////////////
 	//double_str_list.c
-	DListIndex_t *get_new_dlist(void);
-	DListNode_t *get_new_node(char *str);
-	int dlist_is_null(DListIndex_t *dlist);
-	int dlist_is_empty(DListIndex_t *dlist);
+	dlist_index_t *get_new_dlist(void);
+	dlist_node_t *get_new_node(char *str);
+	int dlist_is_null(dlist_index_t *dlist);
+	int dlist_is_empty(dlist_index_t *dlist);
 	////////////////////////////////////////
 	//insert_n_get_dlist.c
-	int get_dlist_length(DListIndex_t *dlist);
-	char *get_dlist_head_value(DListIndex_t *dlist);
-	char *get_dlist_tail_value(DListIndex_t *dlist);
-	int insert_head_dlist(DListIndex_t *dlist, char *str);
-	int insert_tail_dlist(DListIndex_t *dlist, char *str);
+	int get_dlist_length(dlist_index_t *dlist);
+	char *get_dlist_head_value(dlist_index_t *dlist);
+	char *get_dlist_tail_value(dlist_index_t *dlist);
+	int insert_head_dlist(dlist_index_t *dlist, char *str);
+	int insert_tail_dlist(dlist_index_t *dlist, char *str);
 	//////////////////////////////////////////////////////
 #endif

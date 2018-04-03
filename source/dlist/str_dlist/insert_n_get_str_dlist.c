@@ -7,30 +7,30 @@
 
 #include "str_dlist.h"
 
-int get_dlist_length(DListIndex_t *dlist)
+int get_dlist_length(dlist_index_t *dlist)
 {
 	if (dlist_is_null(dlist))
 		return -1;
 	return dlist->length;
 }
 
-char *get_dlist_head_value(DListIndex_t *dlist)
+char *get_dlist_head_value(dlist_index_t *dlist)
 {
 	if (dlist_is_null(dlist) || dlist_is_empty(dlist))
 		return NULL;
 	return dlist->head->val;
 }
 
-char *get_dlist_tail_value(DListIndex_t *dlist)
+char *get_dlist_tail_value(dlist_index_t *dlist)
 {
 	if (dlist_is_null(dlist) || dlist_is_empty(dlist))
 		return NULL;
 	return dlist->tail->val;
 }
 
-int insert_head_dlist(DListIndex_t *dlist, char *str)
+int insert_head_dlist(dlist_index_t *dlist, char *str)
 {
-	DListNode_t *element = NULL;
+	dlist_node_t *element = NULL;
 	element = get_new_node(str);
 
 	if (!element)
@@ -53,9 +53,9 @@ int insert_head_dlist(DListIndex_t *dlist, char *str)
 	return 0;
 }
 
-int insert_tail_dlist(DListIndex_t *dlist, char *str)
+int insert_tail_dlist(dlist_index_t *dlist, char *str)
 {
-	DListNode_t *element = NULL;
+	dlist_node_t *element = NULL;
 	element = get_new_node(str);
 
 	if (!element)
