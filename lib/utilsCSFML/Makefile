@@ -16,10 +16,12 @@ SRCDIR	=	source/
 HDRDIR	=	include/
 LIBDIR	=	../
 
-SRC	=	$(SRCDIR)create_2d_sfVector.c	\
-		$(SRCDIR)create_my_window.c	\
-		$(SRCDIR)create_sfRect.c	\
-		$(SRCDIR)handle_events.c
+SRC	=	$(SRCDIR)create_my_window.c	\
+		$(SRCDIR)handle_events.c	\
+		$(SRCDIR)launch_csfml.c	\
+		$(SRCDIR)sfRect.c	\
+		$(SRCDIR)sfRenderStates.c	\
+		$(SRCDIR)sfVector2d.c
 
 OBJ	=	$(SRC:%.c=%.o)
 

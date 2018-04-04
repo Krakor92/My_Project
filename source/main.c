@@ -55,5 +55,6 @@ int main(int ac, char **av)
 		return FAILURE;
 	}
 	print_all_nb_conversion(nb);
+	launch_csfml();
 	return SUCCESS;
 }

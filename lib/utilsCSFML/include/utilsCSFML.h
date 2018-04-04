@@ -13,16 +13,24 @@
 	#include "basic_c.h"
 
 	/* Prototypes */
-	//create_2d_sfVector.c
-	sfVector2f *init_sfVector2f(double, double);
-	sfVector2u *init_sfVector2u(int, int);
-	sfVector2f *set_sfVector2f_value(sfVector2f*, double, double);
-	sfVector2u *set_sfVector2u_value(sfVector2u*, int, int);
-	//////////////////////////////////////////////////////////////
 	sfRenderWindow *create_my_window(unsigned int, unsigned int);
-	//create_sfRect.c
-	sfIntRect *init_sfIntRect(int, int, int, int);
-	sfIntRect *set_sfIntRect_value(sfIntRect*, int, int, int, int);
-	///////////////////////////////////////////////////////////////
 	void handle_events(sfRenderWindow*, sfEvent);
+	int launch_csfml(void);
+	/////////////////////////////////////////////////////////////
+	//create_2d_sfVector.c///////////////////////////////////////
+	sfVector2u *sfVector2u_init(int, int);
+	sfVector2f *sfVector2f_init(float, float);
+	void sfVector2u_set_value(sfVector2u*, int, int);
+	void sfVector2f_set_value(sfVector2f*, float, float);
+	//////////////////////////////////////////////////////////////
+	//create_sfRect.c//////////////////////////////////////////////
+	sfIntRect *sfIntRect_init(int, int, int, int);
+	sfFloatRect *sfFloatRect_init(float, float, float, float);
+	void sfIntRect_set_value(sfIntRect*, int, int, int, int);
+	void sfFloatRect_set_value(sfFloatRect*, float, float, float, float);
+	///////////////////////////////////////////////////////////////
+	//sfRenderStates.c////////////////////////////////
+	sfRenderStates *sfRenderStates_create(sfTexture*);
+	void sfRenderStates_destroy(sfRenderStates*);
+	//////////////////////////////////////////////////
 #endif
