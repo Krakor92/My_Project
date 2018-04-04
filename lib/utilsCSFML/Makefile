@@ -16,8 +16,11 @@ SRCDIR	=	source/
 HDRDIR	=	include/
 LIBDIR	=	../
 
-SRC	=	$(SRCDIR)create_my_window.c	\
-		$(SRCDIR)handle_events.c	\
+SRC	=	$(SRCDIR)events/handle_events.c	\
+		$(SRCDIR)events/key_events.c	\
+		$(SRCDIR)events/mouse_events.c	\
+		$(SRCDIR)events/window_events.c	\
+		$(SRCDIR)create_my_window.c	\
 		$(SRCDIR)launch_csfml.c	\
 		$(SRCDIR)sfRect.c	\
 		$(SRCDIR)sfRenderStates.c	\
