@@ -92,10 +92,12 @@
 	////str_manip////
 	//my_str_count_words.c//
 	size_t my_str_count_words(const char *str);
+	size_t my_str_count_words_2(char const *str, char);
 	//my_str_realloc.c//
 	char *my_str_realloc(char*, size_t, size_t);
 	//my_str_to_wordtab.c//
-	char **my_str_to_wordarr(char const*);
+	char **my_str_to_wordtab(char const*);
+	char **my_str_to_wordtab_2(char const*, char);
 	//my_strcat.c//
 	char *my_strcat(char*, const char*);
 #endif

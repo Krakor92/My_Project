@@ -23,3 +23,20 @@ size_t my_str_count_words(char const *str)
 	}
 	return nb_words;
 }
+
+size_t my_str_count_words_2(char const *str, char separator)
+{
+	size_t nb_words = 0;
+	int i = 0;
+
+	if (!str)
+		return nb_words;
+	for (i = 0; str[i]; i++) {
+		if (IS_WORDCHAR(str[i]) && str[i] != separator) {
+			nb_words++;
+			while (IS_WORDCHAR(str[i]) && str[i] != separator)
+				i++;
+		}
+	}
+	return nb_words;
+}
