@@ -15,23 +15,21 @@
 ** @param	allow	String of allowed char
 ** @return	1 if {str} is only composed of char in {allow}, else 0
 */
-int my_checkstr(char *str, char *allow)
+bool_t my_strcheck(const char *str, const char *allow)
 {
-	int nb_achar = my_strlen(allow);
-	int not_achar = 0;
+	size_t nb_allowed_char = my_strlen(allow);
+	size_t not_an_allowed_char = 0;
 	int i = 0;
 	int j = 0;
 
-	for (i = 0; str[i] != 0; i++) {
-		while (allow[j] != '\0') {
+	for (i = 0; str[i]; i++) {
+		for (j = 0; allow[j]; j++) {
 			if (str[i] != allow[j])
-				not_achar++;
-			j++;
+				not_an_allowed_char++;
 		}
-		if (not_achar == nb_achar)
-			return 0;
-		j = 0;
-		not_achar = 0;
+		if (not_an_allowed_char == nb_allowed_char)
+			return FALSE;
+		not_an_allowed_char = 0;
 	}
-	return 1;
+	return TRUE;
 }

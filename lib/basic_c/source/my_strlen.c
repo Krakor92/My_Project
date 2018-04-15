@@ -5,7 +5,7 @@
 ** 1 function
 */
 
-#include <stdio.h>
+#include <stddef.h>
 
 /*
 ** my_strlen =
@@ -14,13 +14,11 @@
 ** @param	str	String to parse
 ** @return	The length of {str}
 */
-int my_strlen(char const *str)
+size_t my_strlen(char const *str)
 {
-	int i = 0;
+	size_t i = 0;
 
-	if (str == NULL)
-		return -1;
-	while (str[i] != '\0')
+	while (str[i])
 		i++;
 	return i;
 }

@@ -19,45 +19,46 @@
 ** @return	{dest} with all or a part of {src}'s content OR
 ** 		the same {dest} if it's smaller than {src} and {n}
 */
-char *my_strncpy(char *dest, char const *src, int n)
+char *my_strncpy(char *dest, char const *src, size_t n)
 {
-	int i = 0;
+	size_t i = 0;
 
-	while ((i < n) && (src[i] != '\0')) {
+	for (i = 0; (src[i] && i < n); i++)
 		dest[i] = src[i];
+	dest[i] = '\0';
+	return dest;
+}
+
+char *my_strcpy_from_a2b(char *dest, char const *src, size_t a, size_t b)
+{
+	size_t src_len = my_strlen(src);
+	size_t i = 0;
+
+	if (a > b || src_len <= b)
+		return my_ptr_error("Invalid a or Invalid b!\n");
+	while (src[a] && a <= b) {
+		dest[i] = src[a];
+		a++;
 		i++;
 	}
 	dest[i] = '\0';
 	return dest;
 }
 
-char *my_strcpy_from_a_to_b(char *dest, char const *src, int a, int b)
+char *my_strcpy_till_char(char *dest, char const *src, char c, bool_t copy_it)
 {
-	int i = 0;
-
-	while (a <= b && (src[a] != 0)) {
-		dest[i] = src[a];
-		a++;
-		i++;
-	}
-	dest[i] = 0;
-	return dest;
-}
-
-char *my_strcpy_till_char(char *dest, char const *src, char lchar, int count_it)
-{
-	int i = 0;
+	size_t i = 0;
 
 	if (!dest || !src)
 		return NULL;
-	while ((src[i] != lchar) && (src[i] != 0)) {
+	while (src[i] && src[i] != c) {
 		dest[i] = src[i];
 		i++;
 	}
-	if (count_it == YES && src[i] == lchar) {
+	if (copy_it == TRUE && src[i] == c) {
 		dest[i] = src[i];
 		i++;
 	}
-	dest[i] = 0;
+	dest[i] = '\0';
 	return dest;
 }

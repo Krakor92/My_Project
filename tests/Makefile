@@ -30,16 +30,14 @@ LIBDIR	=	../lib/
 SRC	=	$(SRCDIR)oldProject/get_next_line.c	\
 		$(SRCDIR)dlist/str_dlist/delete_dlist.c	\
 		$(SRCDIR)dlist/str_dlist/double_str_list.c	\
-		$(SRCDIR)dlist/str_dlist/insert_n_get_str_dlist.c	\
-		$(SRCDIR)utils2/2d_arrays/create_2d_arr.c	\
-		$(SRCDIR)utils2/2d_arrays/destroy_2d_arr.c	\
-		$(SRCDIR)utils2/file/copy_file_in_str.c	\
-		$(SRCDIR)utils2/str_manip/str_realloc.c
+		$(SRCDIR)dlist/str_dlist/insert_n_get_str_dlist.c
+
 
 UTSRC	=	$(UTSRCDIR)utils1/utils1_t1.c	\
 		$(UTSRCDIR)utils1/utils1_t2.c	\
 		$(UTSRCDIR)utils1/utils1_t3.c	\
 		$(UTSRCDIR)utils1/utils1_t4.c	\
+		$(UTSRCDIR)utils1/utils1_t5.c	\
 		$(UTSRCDIR)get_next_line/get_next_line_t1.c
 
 OBJ	=	$(SRC:%c=%o) $(UTSRC:%c=%o)
@@ -49,7 +47,6 @@ HDR	=	$(HDRDIR)basic_c.h	\
 		$(HDRDIR)str_dlist.h	\
 		$(HDRDIR)my_printf.h	\
 		$(HDRDIR)my_project.h	\
-		$(HDRDIR)utils2.h	\
 		$(HDRDIR)utilsCSFML.h
 
 # project name (generate executable with this name)

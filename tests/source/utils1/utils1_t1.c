@@ -26,24 +26,24 @@ Test(my_char_count, tests)
 	nb_char = my_char_count(str, 'z');
 	cr_assert_eq(nb_char, 0);
 	nb_char = my_char_count(null, ' ');
-	cr_assert_eq(nb_char, -1);
+	cr_assert_eq(nb_char, 0);
 
 }
 
-/******************
-* my_checkstr.c *
-******************/
-Test(my_checkstr, basicTests)
+/****************
+* my_strcheck.c *
+****************/
+Test(my_strcheck, basicTests)
 {
 	char test[] = "OOHHHH";
-	int retval;
+	bool_t retval;
 
-	retval = my_checkstr(test, "OH");
-	cr_assert_eq(retval, 1);
-	retval = my_checkstr(test, "OH ko");
-	cr_assert_eq(retval, 1);
-	retval = my_checkstr(test, "se");
-	cr_assert_eq(retval, 0);
+	retval = my_strcheck(test, "OH");
+	cr_assert_eq(retval, TRUE);
+	retval = my_strcheck(test, "OH ko");
+	cr_assert_eq(retval, TRUE);
+	retval = my_strcheck(test, "se");
+	cr_assert_eq(retval, FALSE);
 }
 
 /**************
@@ -110,5 +110,5 @@ Test(my_getnchar_id, errorTests)
 	id = my_getnchar_id(str, '\n', 2);
 	cr_assert_eq(id, -1);
 	id = my_getnchar_id(str, ' ', 0);
-	cr_assert_eq(id, -1);
+	cr_assert_eq(id, -2);
 }

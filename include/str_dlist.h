@@ -10,7 +10,6 @@
 
 	/* Library */
 	#include "basic_c.h"
-	#include "my_enums.h"
 	#include "my_structs.h"
 	#include "my_typedefs.h"
 

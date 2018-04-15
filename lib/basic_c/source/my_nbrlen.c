@@ -9,20 +9,20 @@
 
 /*
 ** my_nbrlen =
-** Get the length of an int (count the minus if there is one)
+** Get the length of an int (can count the minus if there is one)
 **
 ** @param	nbr		Number to get the length
 ** @param	count_minus	Count the '-' if there is one ?
-** 				YES(1) or NO(0)
+** 				TRUE(1) or FALSE(0)
 ** @return	The length of the {nbr}
 */
-unsigned int my_nbrlen(int nbr, int count_minus)
+size_t my_nbrlen(int nbr, bool_t count_minus)
 {
-	unsigned int nbr_len = 0;
+	size_t nbr_len = 0;
 
 	if (nbr == 0)
 		return (1);
-	if (nbr < 0 && count_minus == YES)
+	if (nbr < 0 && count_minus == TRUE)
 		nbr_len++;
 	while (nbr != 0) {
 		nbr /= 10;

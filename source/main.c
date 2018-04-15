@@ -23,11 +23,11 @@ static void print_help(void)
 	my_putstr("OPTIONS\n -h\tprint the help and quit.\n");
 }
 
-static void print_all_nb_conversion(int nb)
+void print_all_nb_conversion(int nb)
 {
 	my_printf("Your number is...\n%b in binary\n%o in octal\n\
 %X in hexadecimal\n", nb, nb, nb);
-	printf("\nWith printf()...\n%o in octal\n%X in hexadecimal\n", nb, nb);
+//	printf("\nWith printf()...\n%o in octal\n%X in hexadecimal\n", nb, nb);
 }
 
 /*
@@ -40,20 +40,21 @@ static void print_all_nb_conversion(int nb)
 */
 int main(int ac, char **av)
 {
-	int nb;
+	int nb = 0;
+	char *ptr = NULL;
 
 	if (ac == 2 && my_strequal(av[1], "-h")) {
 		print_help();
 		return SUCCESS;
 	}
-	if (ac != 2) {
+	my_printf("Type a number: ");
+	ptr = get_next_line(0, &nb);
+	if (nb <= 1 || my_getnbr(ptr, &nb) == -1) {
 		my_putstr_error("A number is needed!\n");
 		return FAILURE;
 	}
-	if (my_getnbr(av[1], &nb) == -1) {
-		my_putstr_error("A number is needed!\n");
-		return FAILURE;
-	}
+	my_printf("\n");
+	free(ptr);
 	print_all_nb_conversion(nb);
 	launch_csfml();
 	return SUCCESS;

@@ -50,17 +50,17 @@ Test(my_nlinelen, basicTests)
 	char str[] = "Hey boss\nI have a cancer\nToasty";
 	int nb_char;
 
-	nb_char = my_nlinelen(str, 1, NO);
+	nb_char = my_nlinelen(str, 1, FALSE);
 	cr_assert_eq(nb_char, 8);
-	nb_char = my_nlinelen(str, 1, YES);
+	nb_char = my_nlinelen(str, 1, TRUE);
 	cr_assert_eq(nb_char, 9);
-	nb_char = my_nlinelen(str, 2, NO);
+	nb_char = my_nlinelen(str, 2, FALSE);
 	cr_assert_eq(nb_char, 15);
-	nb_char = my_nlinelen(str, 2, YES);
+	nb_char = my_nlinelen(str, 2, TRUE);
 	cr_assert_eq(nb_char, 16);
-	nb_char = my_nlinelen(str, 3, NO);
+	nb_char = my_nlinelen(str, 3, FALSE);
 	cr_assert_eq(nb_char, 6);
-	nb_char = my_nlinelen(str, 3, YES);
+	nb_char = my_nlinelen(str, 3, TRUE);
 	cr_assert_eq(nb_char, 6);
 }
 
@@ -69,18 +69,18 @@ Test(my_nlinelen, errorTests)
 	char *null = NULL;
 	int nb_char;
 
-	nb_char = my_nlinelen(null, 1, NO);
-	cr_assert_eq(nb_char, -1);
-	nb_char = my_nlinelen(null, 1, YES);
-	cr_assert_eq(nb_char, -1);
-	nb_char = my_nlinelen(null, -1, NO);
-	cr_assert_eq(nb_char, -1);
-	nb_char = my_nlinelen(null, -1, YES);
-	cr_assert_eq(nb_char, -1);
-	nb_char = my_nlinelen(null, 100, NO);
-	cr_assert_eq(nb_char, -1);
-	nb_char = my_nlinelen(null, 100, YES);
-	cr_assert_eq(nb_char, -1);
+	nb_char = my_nlinelen(null, 1, FALSE);
+	cr_assert_eq(nb_char, 0);
+	nb_char = my_nlinelen(null, 1, TRUE);
+	cr_assert_eq(nb_char, 0);
+	nb_char = my_nlinelen(null, -1, FALSE);
+	cr_assert_eq(nb_char, 0);
+	nb_char = my_nlinelen(null, -1, TRUE);
+	cr_assert_eq(nb_char, 0);
+	nb_char = my_nlinelen(null, 100, FALSE);
+	cr_assert_eq(nb_char, 0);
+	nb_char = my_nlinelen(null, 100, TRUE);
+	cr_assert_eq(nb_char, 0);
 }
 
 /**************

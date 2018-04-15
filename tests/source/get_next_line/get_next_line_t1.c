@@ -7,9 +7,6 @@
 
 #include <criterion/criterion.h>
 #include <criterion/redirect.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
 #include "get_next_line.h"
 
 /************************
@@ -34,15 +31,41 @@ TestSuite(get_next_line, .init = openfile, .fini = closefile);
 Test(get_next_line, Basic)
 {
 	char *ptr = NULL;
+	int len;
 
-	ptr = get_next_line(fd);
-	cr_assert_str_eq(ptr, "The quick brown fox jumps over the lazy dog");
-	ptr = get_next_line(fd);
+	ptr = get_next_line(fd, &len);
+	cr_assert_str_eq(ptr, "The quick brown fox jumps over the lazy dog\n");
+	cr_assert_eq(len, 44);
+	free(ptr);
+	ptr = get_next_line(fd, &len);
 	cr_assert_str_eq(ptr, "The above phrase contains all the alphabetical \
-letters");
-	ptr = get_next_line(fd);
-	cr_assert_str_eq(ptr, "Yep it's impressive!");
-	ptr = get_next_line(fd);
+letters\n");
+	cr_assert_eq(len, 55);
+	free(ptr);
+	ptr = get_next_line(fd, &len);
+	cr_assert_str_eq(ptr, "Yep it's impressive!\n");
+	cr_assert_eq(len, 21);
+	free(ptr);
+	ptr = get_next_line(fd, &len);
 	cr_assert_str_eq(ptr, "");
+	cr_assert_eq(len, 0);
+	free(ptr);
+	ptr = get_next_line(fd, &len);
+	cr_assert_str_eq(ptr, "");
+	cr_assert_eq(len, 0);
 	free(ptr);
 }
+
+/*
+Test(get_next_line, Basic1)
+{
+	char *ptr = NULL;
+	int len = 0;
+
+	cr_redirect_stdout ();
+	ptr = get_next_line(0, &len);
+	printf("\n%d, %s", len, ptr);
+
+	cr_assert_eq(ptr, "gout bite");
+}
+*/

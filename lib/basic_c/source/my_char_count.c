@@ -15,14 +15,14 @@
 ** @param	c	Character to count
 ** @return	Number of {c} in {str}
 */
-int my_char_count(const char *str, char c)
+size_t my_char_count(const char *str, char c)
 {
-	int i = 0;
-	int j = 0;
+	size_t i = 0;
+	size_t j = 0;
 
 	if (!str)
-		return -1;
-	for (i = 0; str[i] != 0; i++) {
+		return 0;
+	for (i = 0; str[i]; i++) {
 		if (str[i] == c)
 			j++;
 	}
@@ -44,7 +44,7 @@ int my_line_char_count(const char *str, char c, int line)
 	int j = 0;
 	int cur_line = 1;
 
-	for (i = 0; str[i] != '\0'; i++) {
+	for (i = 0; str[i]; i++) {
 		if (str[i] == '\n')
 			cur_line++;
 		if (cur_line == line && str[i] == c)

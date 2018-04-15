@@ -23,6 +23,6 @@ void sfEvtMouseButtonPressed_events(sfRenderWindow *window, sfEvent event)
 void sfEvtMouseButtonReleased_events(sfRenderWindow *window, sfEvent event)
 {
 	(void) window;
-	my_printf("Released : x = %d, y = %d\n\n", event.mouseButton.x,
+	my_printf("Released : x = %d, y = %d\n", event.mouseButton.x,
 	event.mouseButton.y);
 }

@@ -17,23 +17,23 @@
 ** @return	The length of the {line} lines in {str} OR -1
 ** 		if there was an error
 */
-int my_nlinelen(char const *str, int nline, int count_newline)
+size_t my_nlinelen(char const *str, size_t nline, bool_t count_newline)
 {
-	int nb_lines = my_char_count(str, '\n') + 1;
-	int i = 0;
-	int j = 0;
+	size_t nb_lines = my_char_count(str, '\n') + 1;
+	size_t i = 0;
+	size_t j = 0;
 
-	if (!str || nline <= 0 || nline > nb_lines)
-		return -1;
+	if (!str || nline == 0 || nline > nb_lines)
+		return 0;
 	if (nline == 1) {
-		for (; str[i] != '\n' && str[i] != '\0'; i++)
+		for (i = 0; str[i] && str[i] != '\n'; i++)
 			j++;
 	} else {
 		i = my_getnchar_id(str, '\n', nline - 1) + 1;
-		for (; str[i] != '\n' && str[i] != '\0'; i++)
+		for (; str[i] && str[i] != '\n'; i++)
 			j++;
 	}
-	if (count_newline == YES && str[i] == '\n')
+	if (count_newline == TRUE && str[i] == '\n')
 		j++;
 	return j;
 }

@@ -1,0 +1,26 @@
+##Exemple of a config file
+##Mickey game_object
+
+Type		gobject
+Name		"Mickey"
+Texture		"texture/exemple.png"
+Rect		(40, 40)  ##Biggest Rect
+Anims		Standard: "idle"
+##{"anim_name"; "chrono_name"; restart_chrono; ([rect_pos] (hitbox_rect) * multiplicator) *number_frames; loop}
+
+{"idle";
+"idle_chrono"; 0.1;
+[0, 0](7, 0, 24, 40)*1.5;
+[41, 0](7, 1, 24, 40) *1;
+[82, 0](7, 2, 24, 40)* 1;
+[123](7, 2, 24, 40); ##rien == *1
+TRUE}
+
+//{"running"; "running_chrono"; 0.1; (0, 43, 35, 38)}
+
+
+/*
+Je pense qu'il faut toujours utiliser le Rect le plus grand. Pour pas avoir de
+surprise et pour avoir plus de controle sur ses animations!
+Après, chaque (rect), correspondront à la hitbox de la frame
+*/

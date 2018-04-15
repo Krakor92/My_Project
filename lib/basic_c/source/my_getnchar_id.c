@@ -17,19 +17,18 @@
 ** @return	The id of the {n} {c} in {str} OR -1 if the func didn't find it
 ** 		or if there was an error
 */
-int my_getnchar_id(char const *str, char c, int n)
+int my_getnchar_id(char const *str, char c, size_t n)
 {
-	int i = 0;
-	int j = 0;
+	size_t i = 0;
+	size_t j = 0;
 
-	if (!str || n <= 0)
-		return -1;
-	while (str[i] != '\0') {
+	if (!str || n == 0)
+		return -2;
+	for (i = 0; str[i]; i++) {
 		if (str[i] == c)
 			j++;
 		if (j == n)
 			return i;
-		i++;
 	}
 	return -1;
 }

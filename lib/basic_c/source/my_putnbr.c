@@ -14,14 +14,14 @@
 ** @param	nbr	Number to print
 ** @return	The length of {nbr}
 */
-int my_putnbr(int nbr)
+size_t my_putnbr(int nbr)
 {
-	int minus = 0;
+	bool_t minus = FALSE;
 
 	if (nbr < 0) {
 		my_putchar('-');
 		nbr = -nbr;
-		minus = 1;
+		minus = TRUE;
 	}
 	if (nbr > 9) {
 		my_putnbr(nbr / 10);

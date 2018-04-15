@@ -14,7 +14,7 @@
 ** @param	str	String to print on the stderr
 ** @return	The length of {str}
 */
-int my_putstr_error(char const *str)
+size_t my_putstr_error(char const *str)
 {
 	int str_len = my_strlen(str);
 

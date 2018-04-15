@@ -18,5 +18,5 @@
 	static const char INVALID_READ_SIZE[] = "Invalid READ_SIZE !\n";
 
 	/* Prototypes */
-	char *get_next_line(int);
+	char *get_next_line(int, int*);
 #endif
