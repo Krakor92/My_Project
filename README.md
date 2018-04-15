@@ -3,7 +3,7 @@ This repository is the base of all my **C** projects at ***Epitech***
 
 ## Content
 
-###4 folders
+### 4 folders
 **include**: Contains all my header files.
 **lib**: Contains all my library.
 - basic_c :arrow_right: Basic C functions (string/int manipulation)
@@ -12,7 +12,7 @@ This repository is the base of all my **C** projects at ***Epitech***
 **source**: Contains some file code and a main.c
 **tests**: Contains two folders and a Makefile that execute some coverage code with the lib *Criterion*
 
-###1 Makefile
+### 1 Makefile
 It is composed of **6 rules**
 - *all*: It calls $(NAME) rule
 - *$(NAME)*: It compiles and links all my libraries and all my source code to create a binary
@@ -21,7 +21,7 @@ It is composed of **6 rules**
 - *fclean*: It calls clean rule and execute the script mr_clean
 - *re*: It calls fclean and all rules
 
-###1 script
+### 1 script
 **mr_clean**: It cleans every temporary files in the directory and in it sub-directories
 
 ## Usage
