@@ -4,13 +4,13 @@ This repository is the base of all my **C** projects at ***Epitech***
 ## Content
 
 ### 4 folders
-**include**: Contains all my header files.
-**lib**: Contains all my library.
-- basic_c :arrow_right: Basic C functions (string/int manipulation)
-- my_printf :arrow_right: My Epitech project (it is not perfect, far from it ^^)
-- utilsCSFML :arrow_right: Useful structs and functions to make your life easier with *CSFML* library
-**source**: Contains some file code and a main.c
-**tests**: Contains two folders and a Makefile that execute some coverage code with the lib *Criterion*
+- **include**: Contains all my header files.
+- **lib**: Contains all my library.
+  - basic_c :arrow_right: Basic C functions (string/int manipulation)
+  - my_printf :arrow_right: My Epitech project (it is not perfect, far from it ^^)
+  - utilsCSFML :arrow_right: Useful structs and functions to make your life easier with *CSFML* library
+- **source**: Contains some file code and a main.c
+- **tests**: Contains two folders and a Makefile that execute some coverage code with the lib *Criterion*
 
 ### 1 Makefile
 It is composed of **6 rules**
