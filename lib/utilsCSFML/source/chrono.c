@@ -38,6 +38,8 @@ chrono_t *chrono__create(double restart, void (*restart_action)(void),
 
 void chrono__destroy(chrono_t *chrono)
 {
+	if (!chrono)
+		return;
 	sfClock_destroy(chrono->clock);
 	free(chrono);
 	chrono = NULL;

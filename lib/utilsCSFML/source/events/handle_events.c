@@ -19,4 +19,5 @@ void handle_events(sfRenderWindow *window, gobject_list_t *list, sfEvent event)
 		sfEvtMouseButtonPressed_events(window, event);
 	if (event.type == sfEvtMouseButtonReleased)
 		sfEvtMouseButtonReleased_events(window, event);
+	gobject_list__hold_on_act_if_event(list, event);
 }

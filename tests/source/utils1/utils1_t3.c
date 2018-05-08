@@ -49,6 +49,44 @@ Test(my_strequal, basicTests1)
 	cr_assert_eq(retval, false);
 }
 
+/*************************
+* my_strequal_from_a2b.c *
+*************************/
+Test(my_strequal_from_a2b, basicTests1)
+{
+	char str[] = "The quick brown fox jumps over the lazy dog!\n";
+	int retval;
+
+	retval = my_strequal_from_a2b(str, "quick", 4, 8);
+	cr_assert_eq(retval, true);
+	retval = my_strequal_from_a2b(str, " ", 3, 3);
+	cr_assert_eq(retval, true);
+	retval = my_strequal_from_a2b("lul", "lul", 0, 2);
+	cr_assert_eq(retval, true);
+}
+
+Test(my_strequal_from_a2b, exceptionTests1)
+{
+	char str[] = "The quick brown fox jumps over the lazy dog!\n";
+	char *null = NULL;
+	int retval;
+
+	retval = my_strequal_from_a2b(null, NULL, 0, 0);
+	cr_assert_eq(retval, true);
+	retval = my_strequal_from_a2b(null, str, 3, 3);
+	cr_assert_eq(retval, false);
+	retval = my_strequal_from_a2b(str, null, 3, 3);
+	cr_assert_eq(retval, false);
+	retval = my_strequal_from_a2b("lul", "lulul", 0, 2);
+	cr_assert_eq(retval, false);
+	retval = my_strequal_from_a2b("hello", "hello", 0, 20);
+	cr_assert_eq(retval, -1);
+	retval = my_strequal_from_a2b("lul", "lul", 1, 0);
+	cr_assert_eq(retval, -1);
+	retval = my_strequal_from_a2b("lul", "lul", 3, 5);
+	cr_assert_eq(retval, -1);
+}
+
 /**************
 * my_strlen.c *
 **************/

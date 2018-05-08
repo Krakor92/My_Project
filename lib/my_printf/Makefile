@@ -9,12 +9,12 @@ CC	=	gcc
 
 RM	=	rm -f
 
-CFLAGS	+=	-W -Wall -Wextra -ansi -pedantic -g3 -std=c99 -I$(HDRDIR)
+CPPFLAGS	+=	-I$(HDRDIR)
+CFLAGS	+=	-Wall -Wextra -ansi -pedantic -std=c99
 LFLAGS	=
 
 SRCDIR	=	source/
 HDRDIR	=	include/
-LIBDIR	=	../
 
 SRC	=	$(SRCDIR)base_converter_flags.c	\
 		$(SRCDIR)base_converter.c	\
@@ -40,7 +40,7 @@ $(LIB):	$(OBJ) $(HDR)
 	ranlib $@
 
 %.o: %.c $(HDR)
-	$(CC) $(CFLAGS) -o $@ -c $<
+	$(CC) $(CPPFLAGS) $(CFLAGS) -o $@ -c $<
 
 clean:
 	$(RM) $(OBJ)
@@ -48,6 +48,9 @@ clean:
 fclean:	clean
 	$(RM) $(LIB)
 
-re:	fclean $(LIB)
+re:	fclean all
 
-.PHONY:	all clean fclean re
+debug:	CFLAGS += -g3
+debug:	re
+
+.PHONY:	all clean fclean re debug

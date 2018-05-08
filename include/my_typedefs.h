@@ -10,10 +10,13 @@
 
 	/* Typedefs */
 	//my_struct.h
+	typedef struct size_t2d_s size_t2d_t;
+	typedef struct size_t3d_s size_t3d_t;
 	typedef struct int2d_s int2d_t;
 	typedef struct int3d_s int3d_t;
 	typedef struct float2d_s float2d_t;
 	typedef struct float3d_s float3d_t;
+	typedef struct double2d_s double2d_t;
 
 	//str_dlist.h
 	typedef struct dlist_node_s dlist_node_t;

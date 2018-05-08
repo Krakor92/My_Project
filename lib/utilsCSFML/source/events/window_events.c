@@ -10,5 +10,6 @@
 void sfEvtClosed_events(sfRenderWindow *window, sfEvent event)
 {
 	(void) event;
+	my_printf("*** END ***\n");
 	sfRenderWindow_close(window);
 }

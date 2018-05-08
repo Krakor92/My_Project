@@ -25,7 +25,7 @@ static void print_help(void)
 
 void print_all_nb_conversion(int nb)
 {
-	my_printf("Your number is...\n%b in binary\n%o in octal\n\
+	my_printf("\033[42mYour number is...\033[0m\n%b in binary\n%o in octal\n\
 %X in hexadecimal\n", nb, nb, nb);
 //	printf("\nWith printf()...\n%o in octal\n%X in hexadecimal\n", nb, nb);
 }

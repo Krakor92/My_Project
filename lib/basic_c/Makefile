@@ -9,7 +9,8 @@ CC	=	gcc
 
 RM	=	rm -f
 
-CFLAGS	+=	-W -Wall -Wextra -ansi -pedantic -g3 -std=c99 -I$(HDRDIR)
+CPPFLAGS	+=	-I$(HDRDIR)
+CFLAGS	+=	-Wall -Wextra -ansi -pedantic -std=c99
 LFLAGS	=
 
 SRCDIR	=	source/
@@ -18,6 +19,7 @@ HDRDIR	=	include/
 SRC	=	$(SRCDIR)my_char_count.c	\
 		$(SRCDIR)my_char_check.c	\
 		$(SRCDIR)my_getnbr.c	\
+		$(SRCDIR)my_getnbr_v2.c	\
 		$(SRCDIR)my_getnchar_id.c	\
 		$(SRCDIR)my_int_error.c	\
 		$(SRCDIR)my_nbrlen.c	\
@@ -62,7 +64,7 @@ $(LIB):	$(OBJ) $(HDR)
 	ranlib $@
 
 %.o: %.c $(HDR)
-	$(CC) $(CFLAGS) -o $@ -c $<
+	$(CC) $(CPPFLAGS) $(CFLAGS) -o $@ -c $<
 
 clean:
 	$(RM) $(OBJ)
@@ -70,6 +72,9 @@ clean:
 fclean:	clean
 	$(RM) $(LIB)
 
-re:	fclean $(LIB)
+re:	fclean all
 
-.PHONY:	all clean fclean re
+debug:	CFLAGS += -g3
+debug:	re
+
+.PHONY:	all clean fclean re debug

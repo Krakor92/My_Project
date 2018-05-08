@@ -41,7 +41,7 @@ Test(my_str_count_words, Error_test)
 /**********************
 * my_str_to_wordtab.c *
 **********************/
-Test(my_str_to_wordtab, Basic_test)
+Test(my_str_to_wordtab, Basic_test_1)
 {
 	char str[] = "The quick  brown fox\t jumps over\nthe lazy dog!\n";
 	char **wordtab = NULL;
@@ -59,6 +59,30 @@ Test(my_str_to_wordtab, Basic_test)
 	cr_assert_str_eq(str, "The quick  brown fox\t jumps over\nthe lazy dog!\n");
 	destroy_2d_char_arr_hard(wordtab);
 }
+
+
+Test(my_str_to_wordtab, Basic_Test_2)
+{
+	char str[] = "The slow blue fish";
+	char str1[] = "The quick brown fox";
+	char str2[] = "The fast orange cow";
+	char **arr2d = malloc(3 * sizeof(*arr2d));
+	char **wordtab = NULL;
+
+	cr_assert_neq(arr2d, NULL);
+	arr2d[0] = str;
+	arr2d[1] = str1;
+	arr2d[2] = str2;
+	wordtab = my_str_to_wordtab(arr2d[1]);
+	cr_assert_str_eq(wordtab[0], "The");
+	cr_assert_str_eq(wordtab[1], "quick");
+	cr_assert_str_eq(wordtab[2], "brown");
+	cr_assert_str_eq(wordtab[3], "fox");
+	cr_assert_eq(wordtab[4], NULL);
+//	free(arr2d);
+//	free(wordtab);
+}
+
 
 Test(my_str_to_wordtab, Error_test)
 {

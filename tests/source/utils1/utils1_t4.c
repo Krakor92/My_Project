@@ -43,20 +43,6 @@ Test(my_strncpy, basicTests2)
 	free(arr);
 }
 
-Test(my_strcpy_from_a_to_b, basicTests1)
-{
-	char str[] = "BUM BUM TAM TAM";
-	char s[6];
-	char *arr = NULL;
-
-	arr = my_strcpy_from_a2b(s, str, 0, 4);
-	cr_assert_str_eq(arr, "BUM B");
-	my_strcpy_from_a2b(s, str, 4, 6);
-	cr_assert_str_eq(arr, "BUM");
-	my_strcpy_from_a2b(arr, str, 7, 10);
-	cr_assert_str_eq(s, " TAM");
-}
-
 Test(my_strcpy_till_char, basicTests1)
 {
 	char str[] = "Hog is the best!";

@@ -14,9 +14,8 @@ void print_2d_char_arr(char **arr2d)
 	if (!arr2d)
 		return;
 	for (i = 0; arr2d[i]; i++) {
-		my_putchar('{');
 		my_putstr(arr2d[i]);
-		my_putstr("}\n");
+		my_putchar('\n');
 	}
 }
 
@@ -28,11 +27,10 @@ void print_2d_int_arr(int **arr2d)
 	if (!arr2d)
 		return;
 	for (i = 0; arr2d[i]; i++) {
-		my_putchar('{');
 		for (j = 0; arr2d[i][j]; j++) {
 			my_putnbr(arr2d[i][j]);
 			my_putstr(", ");
 		}
-		my_putstr("}\n");
+		my_putchar('\n');
 	}
 }

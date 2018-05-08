@@ -21,15 +21,16 @@ anim_index_t *anim_index__malloc(void)
 	index->start = NULL;
 	index->end = NULL;
 	index->current = NULL;
+	index->started = FALSE;
 	index->finished = FALSE;
 	index->loop = FALSE;
 	return index;
 }
 
 anim_index_t *anim_index__create(char *name,
-			    sfTexture *ttr,
-			     chrono_t *chrono,
-			       bool_t loop)
+				sfTexture *ttr,
+				chrono_t *chrono,
+				bool_t loop)
 {
 	anim_index_t *index = NULL;
 
@@ -55,7 +56,7 @@ anim_node_t *anim_node__malloc(void)
 	return node;
 }
 
-anim_node_t *anim_node__create(sfIntRect rect, double on)
+anim_node_t *anim_node__create(sfIntRect rect, sfIntRect hitbox, double on)
 {
 	anim_node_t *node = NULL;
 
@@ -63,6 +64,7 @@ anim_node_t *anim_node__create(sfIntRect rect, double on)
 	if (!node)
 		return NULL;
 	node->rect = rect;
+	node->hitbox = hitbox;
 	node->on = on;
 	return node;
 }

@@ -21,7 +21,7 @@ char **my_str_to_wordtab(char const *str)
 	wordarr = malloc((nb_words + 1) * sizeof(*wordarr));
 	if (!wordarr)
 		return my_ptr_error(INVALID_MALLOC);
-
+	wordarr[nb_words] = NULL;
 	while (str[i] && word_id < nb_words) {
 		while (IS_WORDCHAR(str[i])) {
 			word_met = TRUE;
@@ -53,6 +53,7 @@ char **my_str_to_wordtab_2(char const *str, char separator)
 	wordarr = malloc((nb_words + 1) * sizeof(*wordarr));
 	if (!wordarr)
 		return my_ptr_error(INVALID_MALLOC);
+	wordarr[nb_words] = NULL;
 	while (str[i] && word_id < nb_words) {
 		while (IS_WORDCHAR(str[i]) && str[i] != separator) {
 			word_met = TRUE;

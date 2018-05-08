@@ -7,15 +7,18 @@
 
 #include "utilsCSFML.h"
 
-anim_index_t *anim_list_index__find_anim_index(anim_list_index_t *anim_list,
-							    char *name)
+anim_index_t *anim_list_index__find_anim_index(anim_list_index_t *index,
+						char *name)
 {
-	anim_list_node_t *anim_node = anim_list->tail;
+	anim_list_node_t *node = NULL;
 
-	while (anim_node) {
-		if (my_strequal(name, anim_node->anim->name))
-			return anim_node->anim;
-		anim_node = anim_node->next;
+	if (!index || !name)
+		return NULL;
+	for (node = index->tail; node; node = node->next) {
+		if (my_strequal(name, node->anim->name))
+			return node->anim;
 	}
-	return NULL;
+	my_putstr_error("\"");
+	my_putstr_error(name);
+	return my_ptr_error("\" move not found in anim_list!\n");
 }

@@ -5,18 +5,63 @@ Type		gobject
 Name		"Mickey"
 Texture		"texture/exemple.png"
 Rect		(40, 40)  ##Biggest Rect
-Anims		Standard: "idle"
+
 ##{"anim_name"; "chrono_name"; restart_chrono; ([rect_pos] (hitbox_rect) * multiplicator) *number_frames; loop}
+Animation	{"idle"; "idle_chrono"; 0.15;
+		[0, 0](7, 0, 24, 40)*1.5;
+		[41, 0](7, 1, 24, 39) *1;
+		[82, 0](7, 2, 24, 38)* 1;
+		[123, 0](7, 2, 24, 38); ##rien == *1
+		TRUE}
 
-{"idle";
-"idle_chrono"; 0.1;
-[0, 0](7, 0, 24, 40)*1.5;
-[41, 0](7, 1, 24, 40) *1;
-[82, 0](7, 2, 24, 40)* 1;
-[123](7, 2, 24, 40); ##rien == *1
-TRUE}
+		{"run"; "run_chrono"; 0.12;
+		[0, 41](4, 0, 31, 40);##rien == *1
+		[41, 41](3, 2, 35, 38);
+		[82, 41](6, 3, 27, 37);
+		[123, 41](5, 2, 29, 38);
+		[164, 41](3, 2, 35, 38);
+		[205, 41](8, 3, 26, 37);
+		TRUE}
 
-//{"running"; "running_chrono"; 0.1; (0, 43, 35, 38)}
+##{"move_name"; move_type; move_loop_type; ({x_move, y_move}) *number_moves}
+Movement	{"move", 0.01}
+
+		{"run_right"; FIXED; SINGLE_LOOP;
+		{0.5, 0};
+		{1, 0};
+		{1.5, 0};
+		{2, 0};
+		{2.5, 0}}
+
+		{"stop_run_right"; FIXED; SINGLE_LOOP;
+		{-2.5, 0};
+		{-2, 0};
+		{-1.5, 0};
+		{-1, 0};
+		{-0.5, 0}
+		}
+
+
+Action		{"idle"}
+
+		{"running_right"; ENDLESS; mickey_running_right;
+		sfEvtKeyPressed; sfKeyRight; FALSE; FALSE; FALSE; FALSE;
+		"running_right"; "running_right"; "bruit_de_pas.ogg"; "running_right", 1;
+		{NULL}; {NULL}
+		}
+
+/*
+Action		{"act_name"; act_type; action_name;
+		sfEventType; Plus ou moins d'information;
+		"anim_name"; "move_name"; "sound_name"; "chrono_name"; chrono_restart;
+		{("gobject_name", "1st dependence", "2nd dependence");
+		("gobject_name2", "3rd dependence")}
+		{("gobject_name", "1st interdiction")}
+		}
+		##if "gobject_name" == NULL c'est que la dépendance est global
+*/
+
+
 
 
 /*

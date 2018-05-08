@@ -52,12 +52,13 @@ int anim_index__insert_node_end(anim_index_t *index, anim_node_t *node)
 }
 
 int anim_index__insert_new_node_start(anim_index_t *index,
-					 sfIntRect rect,
-					    double on)
+					sfIntRect rect,
+					sfIntRect hitbox,
+					double on)
 {
 	anim_node_t *new_node = NULL;
 
-	new_node = anim_node__create(rect, on);
+	new_node = anim_node__create(rect, hitbox, on);
 	if (!new_node)
 		return -1;
 	if (anim_index__insert_node_start(index, new_node) == -1)
@@ -66,12 +67,13 @@ int anim_index__insert_new_node_start(anim_index_t *index,
 }
 
 int anim_index__insert_new_node_end(anim_index_t *index,
-				       sfIntRect rect,
-					  double on)
+					sfIntRect rect,
+					sfIntRect hitbox,
+					double on)
 {
 	anim_node_t *new_node = NULL;
 
-	new_node = anim_node__create(rect, on);
+	new_node = anim_node__create(rect, hitbox, on);
 	if (!new_node)
 		return -1;
 	if (anim_index__insert_node_end(index, new_node) == -1)

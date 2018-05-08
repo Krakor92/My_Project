@@ -49,6 +49,7 @@
 	bool_t is_a_printable_char(char c);
 	//FILE_NAME//
 	int my_getnbr(char const*, int*);
+	int my_getnbr_v2(char const*, int*);
 	int my_getnchar_id(char const*, char, size_t);
 	int my_int_error(char const*);
 	size_t my_nbrlen(int, bool_t);
@@ -63,7 +64,8 @@
 	char *my_strcpy(char*, char const*);
 	char *my_strdup(char const*);
 	int my_strequal(const char*, const char*);
-	int my_strlen(char const*);
+	int my_strequal_from_a2b(char const*, char const*, size_t, size_t);
+	size_t my_strlen(char const*);
 	char *my_strsub(char*, char, char);
 	unsigned int my_unbrlen(unsigned int);
 	//my_strncpy.c//

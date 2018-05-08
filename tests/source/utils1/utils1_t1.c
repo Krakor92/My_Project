@@ -47,39 +47,65 @@ Test(my_strcheck, basicTests)
 }
 
 /**************
-* my_getnbr.c *
+* my_getnbr_v2.c *
 **************/
-Test(my_getnbr, basicTests1)
+Test(my_getnbr_v2, basic)
 {
-	char str1[] = "ecoekoek--2";
+	char str1[] = "2147483647";
 	char str2[] = "-2xexencence";
 	char str3[] = "ede--- d34-ded";
+	char str4[] = "-2147483648";
 	int retval;
 	int nb;
 
-	retval = my_getnbr(str1, &nb);
-	cr_assert_eq(nb, 2);
+	retval = my_getnbr_v2(str1, &nb);
+	cr_assert_eq(nb, 2147483647);
 	cr_assert_eq(retval, 0);
-	retval = my_getnbr(str2, &nb);
+	retval = my_getnbr_v2(str2, &nb);
 	cr_assert_eq(nb, -2);
 	cr_assert_eq(retval, 0);
-	retval = my_getnbr(str3, &nb);
+	retval = my_getnbr_v2(str3, &nb);
 	cr_assert_eq(nb, 34);
+	cr_assert_eq(retval, 0);
+	retval = my_getnbr_v2(str4, &nb);
+	cr_assert_eq(nb, -2147483648);
 	cr_assert_eq(retval, 0);
 }
 
-Test(my_getnbr, errorTests)
+Test(my_getnbr_v2, overflow)
 {
-	char str[] = "And more, much more than this\nI did it my way!";
+	char str1[] = "2147483648";
+	char str2[] = "12327382492231";
+	char str3[] = "2453728492";
+	char str4[] = "-2147483649";
+	int retval;
+	int nb;
+
+	retval = my_getnbr_v2(str1, &nb);
+	cr_assert_eq(retval, -1);
+	retval = my_getnbr_v2(str2, &nb);
+	cr_assert_eq(retval, -1);
+	retval = my_getnbr_v2(str3, &nb);
+	cr_assert_eq(retval, -1);
+	retval = my_getnbr_v2(str4, &nb);
+	cr_assert_eq(retval, -1);
+}
+
+Test(my_getnbr_v2, exception)
+{
+	char str[] = "The quick brown fox jumps over the lazy dog!\n";
 	char *null = NULL;
 	int retval;
 	int nb;
 
-	retval = my_getnbr(str, &nb);
+	retval = my_getnbr_v2(str, &nb);
 	cr_assert_eq(retval, -1);
-	retval = my_getnbr(null, &nb);
+	retval = my_getnbr_v2(null, &nb);
 	cr_assert_eq(retval, -1);
-
+	retval = my_getnbr_v2(str, NULL);
+	cr_assert_eq(retval, -1);
+	retval = my_getnbr_v2(NULL, NULL);
+	cr_assert_eq(retval, -1);
 }
 
 /*******************

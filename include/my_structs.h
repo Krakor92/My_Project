@@ -9,9 +9,23 @@
 	#define __MY_STRUCTS__H__
 
 	/* Library */
+	#include <stddef.h>
 	#include "my_typedefs.h"
 
 	/* Structs */
+	struct size_t2d_s
+	{
+		size_t x;
+		size_t y;
+	};
+
+	struct size_t3d_s
+	{
+		size_t x;
+		size_t y;
+		size_t z;
+	};
+
 	struct int2d_s
 	{
 		int x;
@@ -36,5 +50,11 @@
 		float x;
 		float y;
 		float z;
+	};
+
+	struct double2d_s
+	{
+		double x;
+		double y;
 	};
 #endif

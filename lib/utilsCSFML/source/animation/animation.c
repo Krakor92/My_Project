@@ -14,44 +14,47 @@ animation_t *animation__malloc(void)
 	animation = malloc(sizeof(*animation));
 	if (!animation)
 		return my_ptr_error(INVALID_MALLOC);
-	animation->standard = NULL;
 	animation->current = NULL;
 	animation->anims = NULL;
 	return animation;
 }
 
-animation_t *animation__create(anim_list_index_t *anims, char *standard)
+animation_t *animation__create(anim_list_index_t *anims)
 {
 	animation_t *animation = NULL;
 
-	if (!standard || !anims)
+	if (!anims)
 		return NULL;
 	animation = animation__malloc();
 	if (!animation)
 		return NULL;
-	animation->standard = anim_list_index__find_anim_index(anims, standard);
-	if (!animation->standard)
-		return NULL;
 	animation->anims = anims;
 	return animation;
 }
-
-
+/*
 int animation__set_current_anim(animation_t *animation, char *name)
 {
-	if (!animation || !name)
+	if (!animation)
 		return -1;
+	if (!name) {
+		animation->current = NULL;
+		return 0;
+	}
+	if (animation->current && my_strequal(animation->current->name, name))
+		return 0;
 	animation->current = anim_list_index__find_anim_index(animation->anims,
-							      name);
+								name);
 	if (!animation->current)
 		return my_int_error("Current anim not found in anim_list!\n");
 	return 0;
 }
+*/
 
 void animation__destroy(animation_t *animation)
 {
-	if (animation) {
-		anim_list_index__destroy(animation->anims);
-		free(animation);
-	}
+	if (!animation)
+		return;
+	anim_list_index__destroy(animation->anims);
+	free(animation);
+	animation = NULL;
 }

@@ -18,12 +18,17 @@
 ## lib: c_graph_prog (CSFML), m (math), ncurses (<-)...
 ##
 
+SHELL	=	/bin/sh
+
 CC	=	gcc
 
 RM	=	rm -f
 
-# compiling flags here
-CFLAGS	=	-W -Wall -Wextra -ansi -pedantic -g3 -std=c99 -I$(HDRDIR)
+DEBUG	=	yes
+
+# compiling flags here (-pg => optimiser le programme + gprof ./exe (sans les args et après avoir executer))
+CPPFLAGS	+=	-W -Wall -Wextra -I$(HDRDIR)
+CFLAGS	=	-ansi -pedantic -std=c99
 # linking flags here
 LFLAGS	=	-lgcov
 
@@ -31,16 +36,20 @@ LFLAGS	=	-lgcov
 LDFLAGS	= -L$(LIBDIR)my_printf/ -L$(LIBDIR)utilsCSFML/ -L$(LIBDIR)basic_c/
 LDLIBS	= -lc_graph_prog -lmy_printf -lutilsCSFML -lbasic_c
 
+LIBRULE	=
+
 # directories location here
 SRCDIR	=	source/
 HDRDIR	=	include/
 LIBDIR	=	lib/
 UTDIR	=	tests/
 
-SRC	=	$(SRCDIR)oldProject/get_next_line.c	\
-		$(SRCDIR)dlist/str_dlist/delete_dlist.c	\
+SRC	=	$(SRCDIR)dlist/str_dlist/delete_dlist.c	\
 		$(SRCDIR)dlist/str_dlist/double_str_list.c	\
 		$(SRCDIR)dlist/str_dlist/insert_n_get_str_dlist.c	\
+		$(SRCDIR)my_math/float_compar.c	\
+		$(SRCDIR)my_math/line_intersection.c	\
+		$(SRCDIR)oldProject/get_next_line.c	\
 		$(SRCDIR)main.c
 
 OBJ	=	$(SRC:%.c=%.o)
@@ -58,27 +67,39 @@ NAME	=	exe
 
 
 
+ifeq ($(DEBUG), yes)
+	LIBRULE = debug
+	CFLAGS += -g3
+endif
+
+
+
 all:	$(NAME)
 
 $(NAME): $(OBJ) $(HDR)
-	$(MAKE) -C $(LIBDIR)basic_c
-	$(MAKE) -C $(LIBDIR)my_printf
-	$(MAKE) -C $(LIBDIR)utilsCSFML
+ifeq ($(DEBUG), yes)
+	@echo "==========================="
+	@echo -e "||\e[96m LAUNCH DEBUGGING MODE \e[0m||"
+	@echo "==========================="
+endif
+	$(MAKE) -C $(LIBDIR)basic_c $(LIBRULE)
+	$(MAKE) -C $(LIBDIR)my_printf $(LIBRULE)
+	$(MAKE) -C $(LIBDIR)utilsCSFML $(LIBRULE)
 	@echo "============================"
-	@echo -e "||\e[34m SUCCESSFUL COMPILATION \e[0m||"
+	@echo -e "||\e[94m SUCCESSFUL COMPILATION \e[0m||"
 	@echo "============================"
 	$(CC) -o $@ $(OBJ) $(LFLAGS) $(LDFLAGS) $(LDLIBS)
 	@echo "======================"
-	@echo -e "||\e[32m LINKING COMPLETE \e[0m||"
+	@echo -e "||\e[92m LINKING COMPLETE \e[0m||"
 	@echo "======================"
 	@echo -e "\e[95m\n=> \e[1m"$@"\e[21m has been created!\n\e[0m"
 
 %.o: %.c $(HDR)
-	$(CC) $(CFLAGS) -o $@ -c $<
+	$(CC) $(CPPFLAGS) $(CFLAGS) -o $@ -c $<
 
 tests_run:
 	@echo "======================="
-	@echo -e "||\e[33m LAUNCH UNIT_TESTS \e[0m||"
+	@echo -e "||\e[93m LAUNCH UNIT_TESTS \e[0m||"
 	@echo "======================="
 	$(MAKE) -C $(UTDIR)
 
@@ -93,9 +114,13 @@ fclean:	 clean
 	$(MAKE) -C $(UTDIR) fclean
 	./mr_clean
 	@echo "======================================="
-	@echo -e "||\e[31m BINARY + LIBS + OBJ_FILES DELETED \e[0m||"
+	@echo -e "||\e[91m BINARY + LIBS + OBJ_FILES DELETED \e[0m||"
 	@echo "======================================="
 
 re:	fclean all
 
-.PHONY: all tests_run clean fclean re
+debug:	LIBRULE = debug
+debug:	CFLAGS += -g3
+debug:	re
+
+.PHONY: all tests_run clean fclean re debug

@@ -36,4 +36,12 @@ If you want to use this repo for your project, you have several steps to do:
 - Update all the headers files accordingly with your previous changes
 - Update $(UTDIR) accordingly with your previous changes
 
+# Task-list
+
+- Create my_fprintf();
+- utilsCSFML:
+  - Make act part
+  - Add a music management
+  - sfRenderWindow_drawSprite don't work well (it leaks 136 bytes and it produce a valgrind error) => I think it's the fault of the unhandled ioctl!
+
 > :heavy_exclamation_mark: Some functions/files might not be eligible by the Epitech Coding Style. I do my best to fix them

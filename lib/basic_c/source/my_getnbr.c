@@ -10,13 +10,14 @@
 
 /*
 ** pos_or_neg =
-** /!\ Works with my_getnbr only /!\
+** /!\ Only works with my_getnbr /!\
 ** Check whether the number in the text is negative or positive
 **
 ** @param	str		String to parse
 ** @param	id_first_digit	Index of the first digit encountered
 ** 				in the {str}
-** @return	1 if the number is positive OR -1 if it's negative
+** @return	1 if the number is positive
+** 		-1 if it's negative
 */
 static int pos_or_neg(char const *str, int id_first_digit)
 {
@@ -37,53 +38,53 @@ static int pos_or_neg(char const *str, int id_first_digit)
 
 /*
 ** get_the_nb_bounds =
-** /!\ Works with my_getnbr only /!\
+** /!\ Only works with my_getnbr /!\
 ** Fill the 3 ints given as parameter (with info about
 ** the position of the number in the string)
 **
 ** @param	str		String to parse
 ** @param	id_first	Index of the first digit of the number
 ** @param	id_final	Index of the last digit of the number
-** @param	nb_bounds	Said whether or not this function encountered
+** @param	nbr_bounds	Said whether or not this function encountered
 **				The first digit (=1), first and last (=2)
 **				or none (=0)
 ** @return	N/A
 */
-static void get_the_nb_bounds(char const *str,
+static void get_the_nbr_bounds(char const *str,
 				int *id_first,
 				int *id_final,
-				int *nb_bounds)
+				int *nbr_bounds)
 {
 	int i = 0;
 
-	if (str == NULL)
+	if (!str)
 		return;
-	while (str[i] != '\0') {
+	for (i = 0; str[i]; i++) {
 		if (IS_NUMBER(str[i])) {
-			if (*nb_bounds == 0) {
+			if (*nbr_bounds == 0) {
 				*id_first = i;
-				*nb_bounds = 1;
+				*nbr_bounds = 1;
 			}
 		}
-		else if (*nb_bounds == 1) {
+		else if (*nbr_bounds == 1) {
 			*id_final = i - 1;
-			*nb_bounds = 2;
+			*nbr_bounds = 2;
 			return;
 		}
-		i++;
 	}
-	if (*nb_bounds == 0)
+	if (*nbr_bounds == 0)
 		return;
 	*id_final = i - 1;
 }
 
 /*
 ** my_getnbr =
+** /!\ depreciated! use my_getnbr_v2 instead /!\
 ** Get the first number encountered in a str and put it in a int
 **
 ** @param	str	String to parse
 ** @param	nb	Int to fill
-** @return	0 if it works well (a number is present in the {str}) OR
+** @return	0 if it works (a number is present in the {str})
 **		-1 if there is no number in the {str}
 */
 int my_getnbr(char const *str, int *nb)
@@ -95,11 +96,11 @@ int my_getnbr(char const *str, int *nb)
 	int p_or_n = 0;
 
 	*nb = 0;
-	get_the_nb_bounds(str, &id_first, &id_final, &nb_limit);
+	get_the_nbr_bounds(str, &id_first, &id_final, &nb_limit);
 	if (nb_limit == 0 || ((id_final - id_first + 1) > 10))
 		return -1;
 	p_or_n = pos_or_neg(str, id_first);
-	for (i = id_first; i <= id_final; i += 1)
+	for (i = id_first; i <= id_final; i++)
 		*nb = *nb * 10 + (str[i] - '0');
 	if ((id_final - id_first + 1) == 10) {
 		if ((str[id_final - 9] > '2') || (*nb < 0))
